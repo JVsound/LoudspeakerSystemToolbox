@@ -37,7 +37,7 @@ title("Sound pressure level of the loudspeaker system") %[output:43bc74b1]
 %[text] - [Documentation overview](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','overview.m'))) — links to the documentation of every class and to the list of symbols.
 %[text] - [`closedBoxExample`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'examples','closedBoxExample.m'))) — a closed box: impedance, sound pressure level and the effect of the box volume.
 %[text] - [`feaEnclosureExample`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'examples','feaEnclosureExample.m'))) — a front-loaded horn from the results of an FEA model, with the maximum sound pressure level.
-%[text] - [`result`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','resultdoc.m'))) — what the results hold, including `maxSoundPressureLevel`. \
+%[text] - [`result`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','resultdoc.m'))) — what the results hold, including `splMax`. \
 
 %[appendix]{"version":"1.0"}
 %---

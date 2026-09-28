@@ -10,7 +10,7 @@
 %[text] ### Acoustical model
 %[text] The acoustical side of the system is the two-port network $ \\mathbf{T}\_a $, which holds the 4-port $ \\mathbf{T}\_{a,e} $ of the enclosure and the 4-port $ \\mathbf{T}\_{a,rad} $ of the radiation on three conductors: the front of the diaphragm (top), the ambient pressure (middle, the reference) and the rear of the diaphragm (bottom). For a closed box:
 %[text]{"align":"center"} ![](text:image:c1b0)
-%[text] - $ \\mathbf{T}\_{a,e} $: the air behind the diaphragm that moves with it is the acoustic mass $ M\_a = \\frac{M\_{mi}}{S\_d^2} $, in series in the rear conductor, because the full volume velocity $ U\_d $ flows through it. The air in the box is the acoustic compliance $ C\_a = \\frac{V\_b}{\\rho c^2} $, between the rear conductor and the ambient pressure. The front conductor passes through.
+%[text] - $ \\mathbf{T}\_{a,e} $: the air behind the diaphragm that moves with it is the acoustic mass $ M\_a = \\frac{M\_{mi}}{S\_d^2} $, in series in the rear conductor, because the full volume velocity $ U\_d $ flows through it. The air in the box is the acoustic compliance $ C\_a = \\frac{V\_r}{\\rho c^2} $, between the rear conductor and the ambient pressure. The front conductor passes through.
 %[text] - $ \\mathbf{T}\_{a,rad} $: the front of the diaphragm radiates through the radiation impedance $ Z\_{rad} $, between the front conductor and the ambient pressure. The radiation impedance is complex and is drawn as a box, as in Beranek. The rear does not radiate: the rear conductor passes through. \
 %[text] The radiation impedance of a rigid piston with the radius $ r\_d $ in an infinite baffle (`zarad`), with the Bessel function $ J\_1 $ and the Struve function $ H\_1 $, is
 %[text]{"align":"center"} $ Z\_{rad} = \\frac{\\rho c}{\\pi r\_d^2} \\left( 1 - \\frac{J\_1(2 k r\_d)}{k r\_d} + j \\frac{H\_1(2 k r\_d)}{k r\_d} \\right) $
@@ -31,7 +31,7 @@
 %%
 %[text] ### `RearVolume` — Volume of the rear chamber
 %[text] `(1,1) double` \[m3\]
-%[text] Volume $ V\_b $ of the sealed chamber behind the diaphragm. Must be positive. Default: 10e-3 m3 (10 L).
+%[text] Volume $ V\_r $ of the sealed chamber behind the diaphragm; the literature (Small, Beranek) writes it as $ V\_b $. Must be positive. Default: 10e-3 m3 (10 L).
 %[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
 %%
 %[text] ### `Driver` — Driver in the enclosure

@@ -51,12 +51,22 @@
 %%
 %[text] ### `Driver` — Driver of the system
 %[text] `(1,1) comp.Driver`
-%[text] Copy of the driver of the system, from `lspsys.Enclosure.Driver`. `maxSoundPressureLevel` uses its limits: see [`comp.Driver`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','driver','driverdoc.m'))).
+%[text] Copy of the driver of the system, from `lspsys.Enclosure.Driver`. `splMax`, `splPowerLimited`, `splExcursionLimited` and `splMaxPeakVoltage` use its limits: see [`comp.Driver`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','driver','driverdoc.m'))).
 %[text] **Attributes:** `GetAccess = public`, `SetAccess = ?lspsys`
 %%
 %[text] ### `MicRadius` — Distance to the microphone
 %[text] `(1,1) double` \[m\]
 %[text] Distance $ r\_{mic} $ from the radiation surface to the microphone, at which `Pressure` and `SoundPressureLevel` are calculated. Must be positive. It can be changed after the calculation, without solving the system again. Default: 1 m.
+%[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
+%%
+%[text] ### `ExcursionLimit` — Excursion limit for the maximum level
+%[text] `(1,1) string` or `(1,1) double` \[m\]
+%[text] Excursion limit that `splMax`, `splExcursionLimited` and `splMaxPeakVoltage` use: the name of an excursion limit of `Driver` (`"Xmax"`, `"Xvar"`, `"Xlim"` or `"Xmech"`), or a peak excursion in m, one way. `createResult` copies it from `Driver.ExcursionLimit`; set it to use another limit without changing the driver. Default: `"Xvar"`.
+%[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
+%%
+%[text] ### `PowerLimit` — Power limit for the maximum level
+%[text] `(1,1) string` or `(1,1) double` \[W\]
+%[text] Power limit that `splMax`, `splPowerLimited` and `splMaxPeakVoltage` use: the name of a power limit of `Driver` (`"Pnom"`, `"Pcont"`, `"Paes1984"` or `"Paes2012"`), or a power in W, the real power into the electrical impedance. `createResult` copies it from `Driver.PowerLimit`; set it to use another limit without changing the driver. Default: `"Pnom"`.
 %[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
 %%
 %[text] ### `ElectricalImpedance` — Electrical impedance of the system
@@ -83,15 +93,24 @@
 %%
 %[text] ### `DiaphragmExcursion` — Excursion of the diaphragm
 %[text] `(1,:) double` \[m\]
-%[text] Complex excursion $ x\_d $ of the diaphragm, from its volume velocity and the effective area $ S\_d $ of `Driver`. It is an RMS value, like `SourceVoltage`; the peak excursion of a sine signal, which you compare with $ X\_{max} $ or $ X\_{var} $, is $ \\sqrt{2} \\, |x\_d| $:
+%[text] Complex excursion $ x\_d $ of the diaphragm, from its volume velocity and the effective area $ S\_d $ of `Driver`. It is an RMS value, like `SourceVoltage`; `DiaphragmPeakExcursion` gives the peak excursion of a sine signal:
 %[text]{"align":"center"} $ x\_d = \\frac{U\_d}{j \\omega S\_d} $
+%[text] **Attributes:** `Dependent`
+%%
+%[text] ### `DiaphragmPeakExcursion` — Peak excursion of the diaphragm
+%[text] `(1,:) double` \[m\]
+%[text] Peak excursion $ \\hat{x}\_d $ of the diaphragm for a sine signal, one way, which you compare directly with $ X\_{max} $ or $ X\_{var} $:
+%[text]{"align":"center"} $ \\hat{x}\_d = \\sqrt{2} \\, |x\_d| $
 %[text] **Attributes:** `Dependent`
 %%
 %[text] ## Methods
 %[text:table]{"columnWidths":[180,80,-1]}
 %[text] | Method | Type | Description |
 %[text] | --- | --- | --- |
-%[text] | [`maxSoundPressureLevel`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','maxsoundpressureleveldoc','maxsoundpressureleveldoc.m'))) | Instance | Highest sound pressure level that the power and the excursion limits allow, for a sine signal, with the limits of `Driver` or other limits. |
+%[text] | [`splMax`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splmaxdoc','splmaxdoc.m'))) | Instance | Highest sound pressure level that the power and the excursion limits allow, for a sine signal: the lower of the next two. |
+%[text] | [`splPowerLimited`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splpowerlimiteddoc','splpowerlimiteddoc.m'))) | Instance | Sound pressure level that the power limit `PowerLimit` alone allows. |
+%[text] | [`splExcursionLimited`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splexcursionlimiteddoc','splexcursionlimiteddoc.m'))) | Instance | Sound pressure level that the excursion limit `ExcursionLimit` alone allows. |
+%[text] | [`splMaxPeakVoltage`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splmaxpeakvoltagedoc','splmaxpeakvoltagedoc.m'))) | Instance | Peak source voltage of a sine signal at which the level reaches `splMax`. |
 %[text:table]
 %%
 %[text] ## Examples
@@ -131,7 +150,7 @@ title("Electrical impedance of the loudspeaker system") %[output:0db9a1c2]
 %%
 %[text] ### Example: Excursion of the diaphragm
 %[text] Continue with the result of the first example and plot the peak excursion of the diaphragm at 2.83 V. The excursion is largest at low frequency and falls quickly above the resonance frequency of the driver in the box, where the mass of the moving system controls it.
-semilogx(res.Frequency,sqrt(2)*abs(res.DiaphragmExcursion)*1e3,LineWidth=1.5) %[output:4c159fa4]
+semilogx(res.Frequency,res.DiaphragmPeakExcursion*1e3,LineWidth=1.5) %[output:4c159fa4]
 grid on %[output:4c159fa4]
 xlabel("Frequency [Hz]") %[output:4c159fa4]
 ylabel("Peak excursion [mm]") %[output:4c159fa4]
@@ -144,7 +163,9 @@ sys.Enclosure.Driver.Zmin = 7;
 sys.Enclosure.Driver.Pnom = 2000;
 sys.Enclosure.Driver.Xvar = 16e-3;
 res = sys.createResult;
-[splMax,powerLevel,excursionLevel] = res.maxSoundPressureLevel;
+splMax = res.splMax;
+powerLevel = res.splPowerLimited;
+excursionLevel = res.splExcursionLimited;
 semilogx(res.Frequency,splMax,res.Frequency,powerLevel,"--",res.Frequency,excursionLevel,":",LineWidth=1.5) %[output:7356fc67]
 grid on %[output:7356fc67]
 ylim([90 150]) %[output:7356fc67]

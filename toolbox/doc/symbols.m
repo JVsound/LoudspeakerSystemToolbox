@@ -10,6 +10,7 @@
 %[text] | $ c $ | m/s | `SpeedOfSound` |
 %[text] | $ C\_{ms} $ | m/N | `Cms` |
 %[text] | $ e\_g $ | V (RMS) | `SourceVoltage` |
+%[text] | $ \\hat{e}\_{g,max} $ | V (peak) | `splMaxPeakVoltage` |
 %[text] | $ f $ | Hz | `Frequency` |
 %[text] | $ f\_s $ | Hz | `Fs` |
 %[text] | $ H\_{mic} $ | Pa.s/m3 | `MicTransfer`, `micTransfer` |
@@ -38,16 +39,17 @@
 %[text] | $ R\_{ms} $ | Ns/m | `Rms` |
 %[text] | $ S\_d $ | m2 | `Sd` |
 %[text] | $ \\mathrm{SPL} $ | dB | `SoundPressureLevel` |
-%[text] | $ \\mathrm{SPL}\_{max} $ | dB | `maxSoundPressureLevel` |
+%[text] | $ \\mathrm{SPL}\_{max} $ | dB | `splMax` |
 %[text] | $ U\_d $ | m3/s | `DiaphragmVolumeVelocity` |
 %[text] | $ U\_{rad} $ | m3/s | `RadiatedVolumeVelocity` |
 %[text] | $ V\_{as} $ | m3 | `Vas` |
-%[text] | $ V\_b $ | m3 | `RearVolume` |
+%[text] | $ V\_r $ | m3 | `RearVolume` (the literature writes $ V\_b $) |
 %[text] | $ X\_{lim} $ | m | `Xlim` |
 %[text] | $ X\_{max} $ | m | `Xmax` |
 %[text] | $ X\_{mech} $ | m | `Xmech` |
 %[text] | $ X\_{var} $ | m | `Xvar` |
 %[text] | $ x\_d $ | m (RMS) | `DiaphragmExcursion` |
+%[text] | $ \\hat{x}\_d $ | m | `DiaphragmPeakExcursion` |
 %[text] | $ Z\_{a,f} $ | Pa.s/m3 | `zaFront` |
 %[text] | $ Z\_{a,r} $ | Pa.s/m3 | `zaRear` |
 %[text] | $ Z\_e $ | Ohm | `ElectricalImpedance` |

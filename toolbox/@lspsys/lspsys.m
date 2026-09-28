@@ -118,7 +118,7 @@ classdef lspsys
             %   val = createResult(obj) solves the two-port network and returns a result object with the
             %   frequency, source voltage, diaphragm and radiated volume velocity and source current, and the
             %   transfer to the microphone (micTransfer) of the enclosure, which is empty for most enclosures, and
-            %   the driver, whose limits maxSoundPressureLevel of the result uses.
+            %   the driver with its choice of limits (ExcursionLimit, PowerLimit), which splMax of the result uses.
 
             % Solve 2-port network:
             s2p = obj.solve2PortNetwork;
@@ -134,6 +134,8 @@ classdef lspsys
             val.SourceCurrent = s2p.SourceCurrent;
             val.MicTransfer = obj.Enclosure.micTransfer(obj.Frequency,obj.RadiationAngle);
             val.Driver = obj.Enclosure.Driver;
+            val.ExcursionLimit = obj.Enclosure.Driver.ExcursionLimit;
+            val.PowerLimit = obj.Enclosure.Driver.PowerLimit;
         end
     end
 

@@ -49,8 +49,8 @@
 </g>
 <text x="650" y="72" text-anchor="middle" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#14233b">lspsys</text>
 <rect x="470" y="40" width="360" height="480" rx="6" fill="none" stroke="#4a5a70" stroke-width="1.6"/>
-<clipPath id="clip2"><rect x="40" y="40" width="330" height="434" rx="6"/></clipPath>
-<rect x="40" y="40" width="330" height="434" rx="6" fill="#ffffff"/>
+<clipPath id="clip2"><rect x="40" y="40" width="330" height="544" rx="6"/></clipPath>
+<rect x="40" y="40" width="330" height="544" rx="6" fill="#ffffff"/>
 <g clip-path="url(#clip2)">
 <rect x="40" y="40" width="330" height="46" fill="#e6eefb"/>
 <rect x="40" y="40" width="330" height="5" fill="#1f4e9c"/>
@@ -65,18 +65,23 @@
 <text x="54" y="258" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">MicTransfer: double</text>
 <text x="54" y="280" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">Driver: comp.Driver</text>
 <text x="54" y="302" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">MicRadius: double</text>
-<rect x="40" y="308" width="330" height="24" fill="#eef1f5"/>
-<text x="54" y="324" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Dependent</text>
-<text x="54" y="348" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">ElectricalImpedance: double</text>
-<text x="54" y="370" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">Pressure: double</text>
-<text x="54" y="392" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">SoundPressureLevel: double</text>
-<text x="54" y="414" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">DiaphragmExcursion: double</text>
-<rect x="40" y="420" width="330" height="24" fill="#eef1f5"/>
-<text x="54" y="436" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Methods</text>
-<text x="54" y="460" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">maxSoundPressureLevel(...)</text>
+<text x="54" y="324" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">ExcursionLimit, PowerLimit</text>
+<rect x="40" y="330" width="330" height="24" fill="#eef1f5"/>
+<text x="54" y="346" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Dependent</text>
+<text x="54" y="370" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">ElectricalImpedance: double</text>
+<text x="54" y="392" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">Pressure: double</text>
+<text x="54" y="414" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">SoundPressureLevel: double</text>
+<text x="54" y="436" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">DiaphragmExcursion: double</text>
+<text x="54" y="458" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">DiaphragmPeakExcursion: double</text>
+<rect x="40" y="464" width="330" height="24" fill="#eef1f5"/>
+<text x="54" y="480" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Methods</text>
+<text x="54" y="504" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">splMax()</text>
+<text x="54" y="526" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">splPowerLimited()</text>
+<text x="54" y="548" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">splExcursionLimited()</text>
+<text x="54" y="570" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">splMaxPeakVoltage()</text>
 </g>
 <text x="205" y="72" text-anchor="middle" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#14233b">result</text>
-<rect x="40" y="40" width="330" height="434" rx="6" fill="none" stroke="#4a5a70" stroke-width="1.6"/>
+<rect x="40" y="40" width="330" height="544" rx="6" fill="none" stroke="#4a5a70" stroke-width="1.6"/>
 <clipPath id="clip3"><rect x="900" y="40" width="380" height="412" rx="6"/></clipPath>
 <rect x="900" y="40" width="380" height="412" rx="6" fill="#ffffff"/>
 <g clip-path="url(#clip3)">

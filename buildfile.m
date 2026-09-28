@@ -11,7 +11,8 @@ function plan = buildfile
 % whose name ends in Task becomes a task: packageTask becomes the task "package".
 plan = buildplan(localfunctions);
 
-% Task "test": a built-in task of MATLAB that runs all tests in the folder tests, like runtests("tests").
+% Task "test": a built-in task of MATLAB that runs all tests in the folder tests and its subfolders, like
+% runtests("tests",IncludeSubfolders=true).
 % The build stops when a test fails.
 plan("test") = matlab.buildtool.tasks.TestTask("tests");
 

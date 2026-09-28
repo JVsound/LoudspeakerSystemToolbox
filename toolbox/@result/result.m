@@ -2,11 +2,12 @@ classdef result
     %RESULT Results of a loudspeaker system calculation
     %   A result object holds the arrays that lspsys calculates over Frequency: the source voltage and
     %   current and the volume velocities of the diaphragm and the radiated sound. lspsys.createResult
-    %   creates it. ElectricalImpedance, Pressure, SoundPressureLevel and DiaphragmExcursion are derived from these
-    %   arrays.
-    %   Pressure comes from the transfer to the microphone (MicTransfer) when the enclosure gives one, and
-    %   otherwise from the radiated volume velocity at the distance MicRadius. maxSoundPressureLevel gives the
-    %   highest level that the power handling and the excursion of the driver (Driver) allow.
+    %   creates it. ElectricalImpedance, Pressure, SoundPressureLevel, DiaphragmExcursion and
+    %   DiaphragmPeakExcursion are derived from these arrays. Pressure comes from the transfer to the microphone
+    %   (MicTransfer) when the enclosure gives one, and otherwise from the radiated volume velocity at the
+    %   distance MicRadius. splMax, splPowerLimited, splExcursionLimited and splMaxPeakVoltage give the highest
+    %   level and its voltage that ExcursionLimit and PowerLimit allow: the limits of the driver (Driver) that
+    %   lspsys.createResult copies from Driver.ExcursionLimit and Driver.PowerLimit, or other values that you set.
 
     properties (SetAccess = ?lspsys)
         Frequency (1,:) double = 0; % Frequencies of the calculation in [Hz]
@@ -16,11 +17,13 @@ classdef result
         RadiatedVolumeVelocity (1,:) double = 0; % Volume velocity of the radiated sound in [m3/s]
         RadiationAngle (1,1) string = "2pi"; % Radiation angle of the enclosure
         MicTransfer (1,:) double = zeros(1,0); % Transfer p_mic/U_d in [Pa.s/m3] from the enclosure, or empty
-        Driver (1,1) comp.Driver = comp.Driver; % Driver of the system, with its limits for maxSoundPressureLevel
+        Driver (1,1) comp.Driver = comp.Driver; % Driver of the system, with its limits for splMax
     end
 
     properties
         MicRadius (1,1) double {mustBePositive} = 1; % Distance in [m] from the radiation surface to the microphone
+        ExcursionLimit {mustBeExcursionLimit} = "Xvar"; % Excursion limit for splMax: a name of Driver or a peak in [m]
+        PowerLimit {mustBePowerLimit} = "Pnom"; % Power limit for splMax: a name of Driver or a power in [W]
     end
 
     properties (Dependent)
@@ -28,6 +31,7 @@ classdef result
         Pressure % Complex sound pressure at MicRadius in [Pa]
         SoundPressureLevel % Sound pressure level at MicRadius in [dB]
         DiaphragmExcursion % Complex excursion of the diaphragm in [m], RMS like SourceVoltage
+        DiaphragmPeakExcursion % Peak excursion of the diaphragm for a sine signal in [m], one way
     end
 
     methods
@@ -90,71 +94,87 @@ classdef result
         function val = get.DiaphragmExcursion(obj)
             %DIAPHRAGMEXCURSION Complex excursion of the diaphragm in [m], RMS like SourceVoltage
 
-            % The excursion is the volume velocity divided by j*w and the effective area of the diaphragm; the
-            % peak excursion of a sine signal is sqrt(2) times its magnitude:
+            % The excursion is the volume velocity divided by j*w and the effective area of the diaphragm:
             w = 2*pi*obj.Frequency;
             val = obj.DiaphragmVolumeVelocity./(1i*w*obj.Driver.Sd);
         end
 
-        function [val,powerLevel,excursionLevel] = maxSoundPressureLevel(obj,limits)
-            %MAXSOUNDPRESSURELEVEL Highest sound pressure level that the power and the excursion limits allow
-            %   val = maxSoundPressureLevel(obj) returns the maximum sound pressure level in [dB] at each frequency,
-            %   for a sine signal, with the limits that the driver chooses in ExcursionLimit and PowerLimit.
-            %
-            %   [val,powerLevel,excursionLevel] = maxSoundPressureLevel(obj) also returns the level that the power
-            %   limit alone allows and the level that the excursion limit alone allows; val is the lower of both.
-            %
-            %   val = maxSoundPressureLevel(obj,Excursion=X,Power=P) uses other limits without changing the
-            %   driver. X is the name of an excursion limit of the driver ("Xmax", "Xvar", "Xlim" or "Xmech") or
-            %   a peak excursion in [m], one way. P is the name of a power limit of the driver ("Pnom", "Pcont",
-            %   "Paes1984" or "Paes2012") or a power in [W].
-            %
-            %   The model is linear, so the level scales with the source voltage. The excursion limits the voltage
-            %   at which the peak excursion sqrt(2)*|DiaphragmExcursion| reaches the limit. A power limit of the driver
-            %   limits the RMS voltage to sqrt(P*Z), with the impedance of its definition: Zmin for Pnom, Pcont
-            %   and Paes1984 (AES2-1984), Znom for Paes2012 (AES2-2012). A power in [W] is the real power into the
-            %   actual electrical impedance Z_e: the RMS voltage is |Z_e|*sqrt(P/Re(Z_e)). The lower voltage sets
-            %   the maximum level at each frequency.
-            arguments
-                obj
-                limits.Excursion (1,1) {mustBeA(limits.Excursion,["string","char","double"])} = ...
-                    obj.Driver.ExcursionLimit % Name of an excursion limit, or a peak excursion in [m]
-                limits.Power (1,1) {mustBeA(limits.Power,["string","char","double"])} = ...
-                    obj.Driver.PowerLimit % Name of a power limit, or a power in [W]
-            end
+        function val = get.DiaphragmPeakExcursion(obj)
+            %DIAPHRAGMPEAKEXCURSION Peak excursion of the diaphragm for a sine signal in [m], one way
 
-            % Peak excursion of the diaphragm at the source voltage of the calculation, in [m]:
-            excursion = sqrt(2)*abs(obj.DiaphragmExcursion);
+            % The peak of a sine signal is sqrt(2) times its RMS value:
+            val = sqrt(2)*abs(obj.DiaphragmExcursion);
+        end
 
-            % Highest RMS source voltage by the excursion limit, in [V]:
-            excursionLimit = obj.driverLimit(limits.Excursion,["Xmax","Xvar","Xlim","Xmech"]);
-            excursionVoltage = obj.SourceVoltage.*excursionLimit./excursion;
+        function val = splMax(obj)
+            %SPLMAX Highest sound pressure level that the power and the excursion limits allow
+            %   val = splMax(obj) returns the maximum sound pressure level in [dB] at each frequency, for a sine
+            %   signal, with the limits in ExcursionLimit and PowerLimit: the lower of splPowerLimited and
+            %   splExcursionLimited. Set ExcursionLimit or PowerLimit of the result to use other limits without
+            %   changing the driver.
+            maxVoltage = min(obj.excursionVoltage(obj.ExcursionLimit),obj.powerVoltage(obj.PowerLimit));
+            val = obj.SoundPressureLevel + 20*log10(maxVoltage./obj.SourceVoltage);
+        end
 
-            % Highest RMS source voltage by the power limit, in [V]:
-            powerLimit = obj.driverLimit(limits.Power,["Pnom","Pcont","Paes1984","Paes2012"]);
-            if isnumeric(limits.Power)
+        function val = splPowerLimited(obj)
+            %SPLPOWERLIMITED Sound pressure level that the power limit alone allows
+            %   val = splPowerLimited(obj) returns the sound pressure level in [dB] at each frequency, for a sine
+            %   signal, at the voltage that the power limit in PowerLimit allows.
+            %
+            %   A power limit of the driver limits the RMS voltage to sqrt(P*Z), with the impedance of its
+            %   definition: Zmin for Pnom, Pcont and Paes1984 (AES2-1984), Znom for Paes2012 (AES2-2012). A power
+            %   in [W] is the real power into the actual electrical impedance Z_e: the RMS voltage is
+            %   |Z_e|*sqrt(P/Re(Z_e)).
+            val = obj.SoundPressureLevel + 20*log10(obj.powerVoltage(obj.PowerLimit)./obj.SourceVoltage);
+        end
+
+        function val = splExcursionLimited(obj)
+            %SPLEXCURSIONLIMITED Sound pressure level that the excursion limit alone allows
+            %   val = splExcursionLimited(obj) returns the sound pressure level in [dB] at each frequency, for a
+            %   sine signal, at the voltage at which the peak excursion of the diaphragm (DiaphragmPeakExcursion)
+            %   reaches the excursion limit in ExcursionLimit.
+            val = obj.SoundPressureLevel + 20*log10(obj.excursionVoltage(obj.ExcursionLimit)./obj.SourceVoltage);
+        end
+
+        function val = splMaxPeakVoltage(obj)
+            %SPLMAXPEAKVOLTAGE Peak source voltage at which the sound pressure level reaches splMax
+            %   val = splMaxPeakVoltage(obj) returns the peak voltage in [V] of a sine signal at each frequency
+            %   that gives the maximum sound pressure level of splMax, with the limits in ExcursionLimit and
+            %   PowerLimit: sqrt(2) times the lower of the RMS voltages that the excursion and the power limit
+            %   allow.
+            val = sqrt(2)*min(obj.excursionVoltage(obj.ExcursionLimit),obj.powerVoltage(obj.PowerLimit));
+        end
+    end
+
+    methods (Access = private)
+        function val = excursionVoltage(obj,excursion)
+            %EXCURSIONVOLTAGE RMS source voltage at which the peak excursion reaches the excursion limit, in [V]
+            %   The model is linear, so the excursion scales with the source voltage.
+            excursionLimit = obj.driverLimit(excursion,["Xmax","Xvar","Xlim","Xmech"]);
+            val = obj.SourceVoltage.*excursionLimit./obj.DiaphragmPeakExcursion;
+        end
+
+        function val = powerVoltage(obj,power)
+            %POWERVOLTAGE RMS source voltage that the power limit allows, in [V]
+            %   A power limit of the driver uses the impedance of its definition; a power in [W] is the real power
+            %   into the actual electrical impedance.
+            powerLimit = obj.driverLimit(power,["Pnom","Pcont","Paes1984","Paes2012"]);
+            if isnumeric(power)
                 % Real power into the actual electrical impedance:
                 Ze = obj.ElectricalImpedance;
-                thermalVoltage = abs(Ze).*sqrt(powerLimit./real(Ze));
+                val = abs(Ze).*sqrt(powerLimit./real(Ze));
             else
                 % Impedance of the definition of the power limit:
-                if string(limits.Power) == "Paes2012"
+                if string(power) == "Paes2012"
                     impedanceName = "Znom";
                 else
                     impedanceName = "Zmin";
                 end
                 impedance = obj.driverLimit(impedanceName,impedanceName);
-                thermalVoltage = sqrt(powerLimit*impedance);
+                val = sqrt(powerLimit*impedance)*ones(size(obj.Frequency));
             end
-
-            % The level scales with the source voltage; the lower level sets the maximum:
-            powerLevel = obj.SoundPressureLevel + 20*log10(thermalVoltage./obj.SourceVoltage);
-            excursionLevel = obj.SoundPressureLevel + 20*log10(excursionVoltage./obj.SourceVoltage);
-            val = min(powerLevel,excursionLevel);
         end
-    end
 
-    methods (Access = private)
         function val = driverLimit(obj,limit,names)
             %DRIVERLIMIT Value of a limit, given as a number or as the name of a property of the driver
             %   A name must be one of names, and the property of the driver must not be 0 (not given).
@@ -172,4 +192,26 @@ classdef result
             end
         end
     end
+end
+
+function mustBeExcursionLimit(value)
+%MUSTBEEXCURSIONLIMIT Validate an excursion limit: a name of an excursion limit of the driver or a peak in [m]
+if isnumeric(value)
+    mustBeNonempty(value)
+    mustBeScalarOrEmpty(value)
+    mustBeNonnegative(value)
+else
+    mustBeMember(value,["Xmax","Xvar","Xlim","Xmech"])
+end
+end
+
+function mustBePowerLimit(value)
+%MUSTBEPOWERLIMIT Validate a power limit: a name of a power limit of the driver or a power in [W]
+if isnumeric(value)
+    mustBeNonempty(value)
+    mustBeScalarOrEmpty(value)
+    mustBeNonnegative(value)
+else
+    mustBeMember(value,["Pnom","Pcont","Paes1984","Paes2012"])
+end
 end

@@ -38,3 +38,19 @@ release/
 
 # Personal settings of Claude Code
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Scratch folder for temporary work (scripts, Ansys runs, intermediate results)
+scratch/
+
+# Files that Ansys creates when it solves the FEA models of the tests: results, solver output, caches and session
+# journals. The project and the models stay in git; runAnsysFea creates these files again.
+tests/**/fea/**/_ProjectScratch/
+tests/**/fea/**/.project_cache
+tests/**/fea/**/session_files/
+tests/**/fea/**/*.rst
+tests/**/fea/**/ds.dat
+tests/**/fea/**/solve.out
+tests/**/fea/**/file*.err
+tests/**/fea/**/CAERep.xml
+tests/**/fea/**/MatML.xml

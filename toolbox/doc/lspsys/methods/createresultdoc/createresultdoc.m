@@ -19,7 +19,8 @@
 %[text] | `SourceVoltage` | `obj.SourceVoltage` at every frequency |
 %[text] | `SourceCurrent`, `DiaphragmVolumeVelocity`, `RadiatedVolumeVelocity` | the solution of `solve2PortNetwork` |
 %[text] | `MicTransfer` | `obj.Enclosure.micTransfer`, the transfer to the microphone; empty for most enclosures |
-%[text] | `Driver` | a copy of `obj.Enclosure.Driver`, whose limits `result.maxSoundPressureLevel` uses |
+%[text] | `Driver` | a copy of `obj.Enclosure.Driver`, whose limits `result.splMax` uses |
+%[text] | `ExcursionLimit`, `PowerLimit` | `Driver.ExcursionLimit` and `Driver.PowerLimit`, the limits for `result.splMax`; you can change them on the result |
 %[text:table]
 %[text] The electrical impedance, the pressure and the sound pressure level are dependent properties of the `result` object, calculated from these values when they are read.
 %%

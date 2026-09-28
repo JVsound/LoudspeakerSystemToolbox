@@ -77,7 +77,7 @@
 %[text] | Method | Type | Description |
 %[text] | --- | --- | --- |
 %[text] | [`solve2PortNetwork`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','methods','solve2portnetworkdoc','solve2portnetworkdoc.m'))) | Instance | Solve the two-port network of the system. Returns a struct with the diaphragm volume velocity and the source current. |
-%[text] | [`createResult`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','methods','createresultdoc','createresultdoc.m'))) | Instance | Solve the system and return a `result` object, with the transfer to the microphone of the enclosure (`micTransfer`) and a copy of the driver for `maxSoundPressureLevel`. |
+%[text] | [`createResult`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','methods','createresultdoc','createresultdoc.m'))) | Instance | Solve the system and return a `result` object, with the transfer to the microphone of the enclosure (`micTransfer`) and a copy of the driver for `splMax`. |
 %[text] | `f2k` | Static | Wave number for a frequency: `2*pi*f / SpeedOfSound`. |
 %[text] | `f2Lambda` | Static | Wavelength for a frequency: `SpeedOfSound ./ f`. |
 %[text:table]

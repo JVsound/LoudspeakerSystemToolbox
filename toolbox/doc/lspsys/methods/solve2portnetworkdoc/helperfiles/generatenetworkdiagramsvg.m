@@ -11,7 +11,8 @@ function svgPath = generatenetworkdiagramsvg(svgPath, options)
     %   conductor, "fourportdetail", the inside of T_a with the 4-ports T_a,e
     %   of the enclosure and T_a,rad of the radiation, "closedbox", the
     %   inside of T_a for comp.ClosedBox, "feaenclosure", the inside of T_a for
-    %   comp.FeaEnclosure, or "definition", one generic 2-port
+    %   comp.FeaEnclosure, "bassreflex" and "frontloadedhorn", the inside of T_a
+    %   for comp.BassReflex and comp.FrontLoadedHorn, or "definition", one generic 2-port
     %   network with its ports to define the transmission matrix. The diagram
     %   is written to networkdiagram<L>.svg by default.
     %
@@ -31,7 +32,8 @@ function svgPath = generatenetworkdiagramsvg(svgPath, options)
     arguments
         svgPath (1,1) string = ""
         options.Layout (1,1) string {mustBeMember(options.Layout, ...
-            ["fourport","fourportdetail","closedbox","feaenclosure","definition"])} = "fourport"
+            ["fourport","fourportdetail","closedbox","feaenclosure","bassreflex","frontloadedhorn", ...
+            "definition"])} = "fourport"
     end
 
     layout = options.Layout;
@@ -88,6 +90,131 @@ function svgPath = generatenetworkdiagramsvg(svgPath, options)
         parts(end+1) = captiontext(110, 280, "port 1");
         parts(end+1) = captiontext(410, 280, "port 2");
         writesvg(svgPath, parts, labels, 520, 310);
+        return
+    end
+
+    if layout == "bassreflex" || layout == "frontloadedhorn"
+        % The inside of T_a for comp.BassReflex or comp.FrontLoadedHorn. All elements have the size of the other
+        % diagrams; the rear conductor lies lower than in "closedbox", so that the compliance and the absorption
+        % resistance fit in series in one shunt branch. Both have on the rear conductor the air mass on the rear
+        % of the diaphragm in series, the leakage resistance of the closed volume to the reference, and the
+        % compliance of the closed volume in series with its absorption resistance to the reference. Bass
+        % reflex: then the air mass and the resistance of the port in series in T_a,e; the radiation of the
+        % diaphragm and of the port in T_a,rad. Front-loaded horn: the compliance of the throat chamber and the
+        % horn as a 2-port between the front conductor and the reference in T_a,e; the radiation of the mouth
+        % in T_a,rad.
+        openCircuit = readicon(fullfile(iconFolder, "open_circuit.svg"), ink);
+        reference3 = top + 70;
+        bottom = reference3 + 150;
+        middle = (top + bottom) / 2 + 8;
+        below = bottom + 28;
+        canvasWidth = 1080;
+        canvasHeight = bottom + 80;
+        mirror = @(x) canvasWidth - x;
+        dot = @(x, y) sprintf('<circle cx="%g" cy="%g" r="3.5" fill="%s"/>', x, y, ink);
+        box = @(left, right) string(sprintf(['<rect x="%g" y="40" width="%g" height="%g" rx="4" fill="none" ' ...
+            'stroke="#8a96a8" stroke-width="1.5"/>'], left, right - left, bottom + 10));
+
+        % Vertical element of normal size between y1 and y2, centred, with leads; iconLength in icon units
+        shunt = @(icon, x, y1, y2, iconLength, anchor) strjoin([ ...
+            string(wire([x y1; x (y1 + y2 - iconLength*small)/2])), ...
+            string(placeicon(icon, x, (y1 + y2 - iconLength*small)/2, small, 90, anchor)), ...
+            string(wire([x (y1 + y2 + iconLength*small)/2; x y2]))], newline);
+        capacitorLength = 162;
+        resistorLength = 237.6;
+
+        parts(end+1) = box(240, 630);
+        labels(end+1, :) = {"\mathbf{T}_{a,e}", 252, 68, "start"};
+        parts(end+1) = box(680, 840);
+        labels(end+1, :) = {"\mathbf{T}_{a,rad}", 692, 68, "start"};
+        for y = [top bottom]
+            parts(end+1) = placeicon(openCircuit, 60, y, 0.4, 180, [5.4 22.5]); %#ok<AGROW>
+            parts(end+1) = placeicon(openCircuit, mirror(60), y, 0.4, 0, [5.4 22.5]); %#ok<AGROW>
+        end
+        parts(end+1) = placeicon(reference, 200, reference3, 0.015, 180, [16 1417]);
+        parts(end+1) = placeicon(reference, mirror(200), reference3, 0.015, 0, [16 1417]);
+
+        % Rear conductor: the air mass in series, the leakage resistance to the reference, and the compliance in
+        % series with the absorption resistance to the reference
+        parts(end+1) = wire([60 bottom; 260 bottom]);
+        parts(end+1) = placeicon(inductor, 260, bottom, small, 0, [5.4 90]);
+        parts(end+1) = shunt(resistor, 360, reference3, bottom, resistorLength, [5.4 90]);
+        parts(end+1) = dot(360, reference3);
+        parts(end+1) = dot(360, bottom);
+        labels(end+1, :) = {"R_{a1}", 346, (reference3 + bottom) / 2 + 8, "end"};
+        splitY = reference3 + (bottom - reference3) * 0.42;
+        parts(end+1) = shunt(capacitor, 440, reference3, splitY, capacitorLength, [9 90]);
+        parts(end+1) = shunt(resistor, 440, splitY, bottom, resistorLength, [5.4 90]);
+        parts(end+1) = dot(440, reference3);
+        parts(end+1) = dot(440, bottom);
+        labels(end+1, :) = {"R_{a2}", 456, (splitY + bottom) / 2 + 8, "start"};
+        if layout == "bassreflex"
+            parts(end+1) = wire([200 reference3; mirror(200) reference3]);
+            labels(end+1, :) = {"M_{a1}", 291, below, "middle"};
+            labels(end+1, :) = {"C_a", 456, (reference3 + splitY) / 2 + 8, "start"};
+
+            % Air mass and resistance of the port in series on the rear conductor, then its radiation
+            parts(end+1) = wire([322 bottom; 480 bottom]);
+            parts(end+1) = placeicon(inductor, 480, bottom, small, 0, [5.4 90]);
+            labels(end+1, :) = {"M_{a2}", 511, below, "middle"};
+            parts(end+1) = wire([542 bottom; 548 bottom]);
+            parts(end+1) = placeicon(resistor, 548, bottom, small, 0, [5.4 90]);
+            labels(end+1, :) = {"R_{a3}", 583, below, "middle"};
+            parts(end+1) = wire([618 bottom; mirror(60) bottom]);
+            parts(end+1) = impedancebox(760, reference3, bottom, ink);
+            parts(end+1) = dot(760, reference3);
+            parts(end+1) = dot(760, bottom);
+            labels(end+1, :) = {"Z_{rad2}", 780, (reference3 + bottom) / 2 + 8, "start"};
+
+            % Front conductor: the radiation of the diaphragm to the reference
+            parts(end+1) = wire([60 top; mirror(60) top]);
+            parts(end+1) = impedancebox(760, top, reference3, ink);
+            parts(end+1) = dot(760, top);
+            parts(end+1) = dot(760, reference3);
+            labels(end+1, :) = {"Z_{rad1}", 780, (top + reference3) / 2 + 8, "start"};
+        else
+            labels(end+1, :) = {"M_a", 291, below, "middle"};
+            labels(end+1, :) = {"C_{a1}", 456, (reference3 + splitY) / 2 + 8, "start"};
+            parts(end+1) = wire([322 bottom; mirror(60) bottom]);
+
+            % Front conductor: the compliance of the throat chamber to the reference, then the horn as a 2-port
+            % block that holds the front conductor and the reference, then the radiation of the mouth
+            parts(end+1) = shunt(capacitor, 360, top, reference3, capacitorLength, [9 90]);
+            parts(end+1) = dot(360, top);
+                        labels(end+1, :) = {"C_{a2}", 376, (top + reference3) / 2 + 8, "start"};
+            hornLeft = 500;
+            hornRight = 600;
+            parts(end+1) = wire([60 top; hornLeft top]);
+            parts(end+1) = wire([200 reference3; hornLeft reference3]);
+            parts(end+1) = sprintf(['<rect x="%g" y="%g" width="%g" height="%g" rx="3" fill="#ffffff" ' ...
+                'stroke="%s" stroke-width="1.5"/>'], hornLeft, top - 22, hornRight - hornLeft, ...
+                reference3 - top + 44, ink);
+            labels(end+1, :) = {"\mathbf{T}_h", (hornLeft + hornRight) / 2, (top + reference3) / 2 + 8, "middle"};
+            parts(end+1) = wire([hornRight top; mirror(60) top]);
+            parts(end+1) = wire([hornRight reference3; mirror(200) reference3]);
+            parts(end+1) = impedancebox(760, top, reference3, ink);
+            parts(end+1) = dot(760, top);
+            parts(end+1) = dot(760, reference3);
+            labels(end+1, :) = {"Z_{rad}", 780, (top + reference3) / 2 + 8, "start"};
+        end
+        labels(end+1, :) = {"U_d", 100, above, "middle"};
+        parts(end+1) = arrow(100, top);
+        labels(end+1, :) = {"U_d", 100, below, "middle"};
+        parts(end+1) = arrowLeft(100, bottom);
+        labels(end+1, :) = {"p_1", 100, middle, "middle"};
+        labels(end+1, :) = {"U_f", 655, above, "middle"};
+        parts(end+1) = arrow(655, top);
+        labels(end+1, :) = {"U_r", 655, below, "middle"};
+        parts(end+1) = arrowLeft(655, bottom);
+        labels(end+1, :) = {"U_2", mirror(100), above, "middle"};
+        parts(end+1) = arrow(mirror(100), top);
+        labels(end+1, :) = {"U_2", mirror(100), below, "middle"};
+        parts(end+1) = arrowLeft(mirror(100), bottom);
+        labels(end+1, :) = {"p_2", mirror(100), middle, "middle"};
+        parts(end+1) = sprintf(['<rect x="135" y="8" width="%g" height="%g" rx="4" fill="none" ' ...
+            'stroke="#8a96a8" stroke-width="1.5" stroke-dasharray="8 5"/>'], mirror(135) - 135, canvasHeight - 26);
+        labels(end+1, :) = {"\mathbf{T}_a", 145, 32, "start"};
+        writesvg(svgPath, parts, labels, canvasWidth, canvasHeight);
         return
     end
 

@@ -6,7 +6,7 @@
 %%
 %[text] ## Description
 %[text] The `comp.Driver` class describes the electromechanical transducer of a loudspeaker system. The Thiele-Small parameters `Re`, `Le`, `Qes`, `Qms`, `Fs`, `Sd` and `Vas` of the datasheet set the electrical, electromechanical and mechanical side of the two-port network of [`lspsys`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','lspsysdoc.m'))); the other parameters, such as `Bl`, `Cms` and `Mmd`, are derived from them.
-%[text] The limits of the datasheet, the power handling with its impedances and the excursion, are optional: they do not change the calculation, and a limit of 0 means that it is not given. [`result.maxSoundPressureLevel`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','resultdoc.m'))) uses them to calculate the highest sound pressure level; `ExcursionLimit` and `PowerLimit` choose which limits it uses by default.
+%[text] The limits of the datasheet, the power handling with its impedances and the excursion, are optional: they do not change the calculation, and a limit of 0 means that it is not given. [`result.splMax`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','resultdoc.m'))) uses them to calculate the highest sound pressure level; `ExcursionLimit` and `PowerLimit` choose which limits it uses by default.
 %%
 %[text] ## Creation
 %[text] ```matlabCodeExample
@@ -104,12 +104,12 @@
 %%
 %[text] ### `ExcursionLimit` — Excursion limit for the maximum level
 %[text] `(1,1) string`
-%[text] Name of the excursion limit that `result.maxSoundPressureLevel` uses by default: `"Xmax"`, `"Xvar"`, `"Xlim"` or `"Xmech"`. Default: `"Xvar"`.
+%[text] Name of the excursion limit that `lspsys.createResult` copies to `result.ExcursionLimit`, the default limit of `result.splMax`: `"Xmax"`, `"Xvar"`, `"Xlim"` or `"Xmech"`. Default: `"Xvar"`.
 %[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
 %%
 %[text] ### `PowerLimit` — Power limit for the maximum level
 %[text] `(1,1) string`
-%[text] Name of the power limit that `result.maxSoundPressureLevel` uses by default: `"Pnom"`, `"Pcont"`, `"Paes1984"` or `"Paes2012"`. Default: `"Pnom"`.
+%[text] Name of the power limit that `lspsys.createResult` copies to `result.PowerLimit`, the default limit of `result.splMax`: `"Pnom"`, `"Pcont"`, `"Paes1984"` or `"Paes2012"`. Default: `"Pnom"`.
 %[text] **Attributes:** `GetAccess = public`, `SetAccess = public`
 %%
 %[text] ### `Bl` — Force factor

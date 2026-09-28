@@ -2,7 +2,7 @@ classdef Driver
     %DRIVER Class definition for a loudspeaker driver
     %   A driver is described by the parameters Re, Le, Qes, Qms, Fs, Sd and Vas. Its limits from the datasheet are
     %   optional: the power handling Pnom, Pcont, Paes1984 and Paes2012, with the impedances Znom and Zmin, and the
-    %   excursion Xmax, Xvar, Xlim and Xmech; 0 means not given. Only result.maxSoundPressureLevel uses them, with
+    %   excursion Xmax, Xvar, Xlim and Xmech; 0 means not given. Only result.splMax uses them, with
     %   the limits that ExcursionLimit and PowerLimit choose by default. The other parameters (Bl, Cms, Mmd, ...)
     %   are derived from Re to Vas. zeb, zm, te, tbl, tm and tsd return the impedances and two-port transmission
     %   matrices of the driver that lspsys uses to solve the system.

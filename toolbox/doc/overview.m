@@ -10,7 +10,9 @@
 %[text] - [`comp.Enclosure`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','enclosure','enclosuredoc.m'))) — Base class for the enclosure of a loudspeaker driver.
 %[text] - [`comp.ClosedBox`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','closedbox','closedboxdoc.m'))) — Closed-box enclosure.
 %[text] - [`comp.FeaEnclosure`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','feaenclosure','feaenclosuredoc.m'))) — Enclosure described by the results of an FEA model. \
-%[text] The `comp` namespace also defines `BassReflex` and `FrontLoadedHorn`, but these are not documented yet.
+%[text] Drafts of enclosures that are designed but not implemented yet:
+%[text] - [`comp.BassReflex`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','bassreflex','bassreflexdoc.m'))) — Bass-reflex enclosure (draft).
+%[text] - [`comp.FrontLoadedHorn`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','frontloadedhorn','frontloadedhorndoc.m'))) — Front-loaded horn (draft). \
 %[text] ## Class diagram
 %[text] Overview of the classes in the toolbox and their relations, drawn from the class definitions (dashed outline: work in progress). The vector source is [classdiagramcollapsed.svg](matlab:web(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','helperfiles','classdiagramcollapsed.svg'),'-browser')).
 %[text]{"align":"center"} ![](text:image:9a3f)
