@@ -57,3 +57,5 @@ tests/**/fea/**/solve.out
 tests/**/fea/**/file*.err
 tests/**/fea/**/CAERep.xml
 tests/**/fea/**/MatML.xml
+
+/tests/FeaEnclosureTest/helperfiles/fea/
