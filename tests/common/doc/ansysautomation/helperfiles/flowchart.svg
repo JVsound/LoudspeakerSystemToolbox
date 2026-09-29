@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1060" viewBox="0 0 980 1060" role="img">
+<title>Text files from an Ansys simulation</title>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b3646" stroke-width="1.6"/></marker>
+<marker id="arrowSolve" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#c2410c" stroke-width="1.8"/></marker>
+<style>
+text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; font-size: 13px; fill: #2b3646; }
+.code { font-family: Consolas, 'Courier New', monospace; font-size: 12px; }
+.small { font-size: 12px; }
+.note { font-size: 11px; fill: #5b6778; }
+.lane { font-size: 14px; font-weight: 600; }
+.title { font-size: 18px; font-weight: 600; }
+.box { fill: #f4f6f9; stroke: #2b3646; stroke-width: 1.4; }
+.solve { fill: #fff4ec; stroke: #c2410c; stroke-width: 1.6; }
+.file { fill: #fffbe6; stroke: #2b3646; stroke-width: 1.4; }
+.line { fill: none; stroke: #2b3646; stroke-width: 1.6; }
+.lineSolve { fill: none; stroke: #c2410c; stroke-width: 1.8; }
+</style>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+
+<!-- Title -->
+<text x="20" y="30" class="title">Text files from an Ansys simulation</text>
+<text x="20" y="50" class="small">Any Workbench project, any systems and named selections; the caller only gives the inputs.</text>
+
+<!-- Lanes -->
+<rect x="20" y="66" width="230" height="36" fill="#e3e8ef"/>
+<rect x="250" y="66" width="230" height="36" fill="#e3e8ef"/>
+<rect x="480" y="66" width="250" height="36" fill="#e3e8ef"/>
+<rect x="730" y="66" width="230" height="36" fill="#e3e8ef"/>
+<text x="135" y="89" text-anchor="middle" class="lane">Caller (live script)</text>
+<text x="365" y="89" text-anchor="middle" class="lane">Second MATLAB (-batch)</text>
+<text x="605" y="89" text-anchor="middle" class="lane">Python: PyAnsys</text>
+<text x="845" y="89" text-anchor="middle" class="lane">Ansys Workbench</text>
+<path d="M250,66 L250,1045 M480,66 L480,1045 M730,66 L730,1045" fill="none" stroke="#c9d1dc" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+<!-- A: inputs -->
+<rect x="35" y="122" width="200" height="92" rx="6" class="box"/>
+<text x="135" y="143" text-anchor="middle" class="small">Define the struct job:</text>
+<text x="135" y="162" text-anchor="middle" class="code">.WorkbenchFile  (.wbpj)</text>
+<text x="135" y="178" text-anchor="middle" class="code">.Models  (folder, SYS-n)</text>
+<text x="135" y="194" text-anchor="middle" class="code">.Selections  (name, .txt)</text>
+<text x="135" y="210" text-anchor="middle" class="code">.OutFolder</text>
+
+<!-- Frame: exportFeaPressureResults in the MATLAB of the user does B and C -->
+<rect x="26" y="224" width="218" height="188" rx="8" fill="none" stroke="#8a96a8" stroke-width="1.2" stroke-dasharray="5 4"/>
+
+<!-- B: job.mat -->
+<path d="M35,252 L219,252 L235,268 L235,308 L35,308 Z" class="file"/>
+<path d="M219,252 L219,268 L235,268" fill="none" stroke="#2b3646" stroke-width="1.4"/>
+<text x="135" y="275" text-anchor="middle" class="small">save job to a MAT-file</text>
+<text x="135" y="294" text-anchor="middle" class="small">in scratch</text>
+
+<!-- C: system -->
+<rect x="35" y="346" width="200" height="56" rx="6" class="box"/>
+<text x="135" y="369" text-anchor="middle" class="code">system("matlab -batch ... &amp;")</text>
+<text x="135" y="388" text-anchor="middle" class="small">starts a second MATLAB</text>
+
+<!-- D: MATLAB free -->
+<rect x="45" y="446" width="180" height="40" rx="20" class="box"/>
+<text x="135" y="471" text-anchor="middle" class="small">Returns at once: MATLAB free</text>
+
+<!-- E: load job -->
+<rect x="258" y="346" width="214" height="56" rx="6" class="box"/>
+<text x="365" y="369" text-anchor="middle" class="code">exportFeaPressureResults(job)</text>
+<text x="365" y="388" text-anchor="middle" class="small">again, now does the work</text>
+
+<!-- F: for each model -->
+<rect x="275" y="446" width="180" height="56" rx="6" class="box"/>
+<text x="365" y="469" text-anchor="middle" class="small">For each model:</text>
+<text x="365" y="488" text-anchor="middle" class="code">readAnsysFea(SYS-n)</text>
+
+<!-- G: decision -->
+<path d="M365,544 L465,594 L365,644 L265,594 Z" class="box"/>
+<text x="365" y="589" text-anchor="middle" class="small">file.rst in</text>
+<text x="365" y="607" text-anchor="middle" class="code">dp0\SYS-n\MECH?</text>
+
+<!-- H: PyWorkbench -->
+<rect x="505" y="566" width="200" height="56" rx="6" class="solve"/>
+<text x="605" y="589" text-anchor="middle" class="small">PyWorkbench: start Workbench</text>
+<text x="605" y="608" text-anchor="middle" class="small">without a window, open project</text>
+
+<!-- I: Update -->
+<rect x="745" y="566" width="200" height="56" rx="6" class="solve"/>
+<text x="845" y="589" text-anchor="middle" class="small">Update system SYS-n:</text>
+<text x="845" y="608" text-anchor="middle" class="small">mesh and solve</text>
+
+<!-- J: Save / file.rst -->
+<path d="M745,676 L929,676 L945,692 L945,732 L745,732 Z" class="file"/>
+<path d="M929,676 L929,692 L945,692" fill="none" stroke="#2b3646" stroke-width="1.4"/>
+<text x="845" y="699" text-anchor="middle" class="small">Save project: writes</text>
+<text x="845" y="718" text-anchor="middle" class="code">dp0\SYS-n\MECH\file.rst</text>
+
+<!-- K: PyDPF -->
+<rect x="505" y="776" width="200" height="56" rx="6" class="box"/>
+<text x="605" y="799" text-anchor="middle" class="small">PyDPF: read file.rst, pressure</text>
+<text x="605" y="818" text-anchor="middle" class="small">per named selection, node mean</text>
+
+<!-- L: text files -->
+<path d="M505,876 L689,876 L705,892 L705,932 L505,932 Z" class="file"/>
+<path d="M689,876 L689,892 L705,892" fill="none" stroke="#2b3646" stroke-width="1.4"/>
+<text x="605" y="899" text-anchor="middle" class="small">One text file per selection in</text>
+<text x="605" y="918" text-anchor="middle" class="code">job.OutFolder\&lt;folder&gt;</text>
+
+<!-- M: next model -->
+<path d="M365,874 L435,904 L365,934 L295,904 Z" class="box"/>
+<text x="365" y="909" text-anchor="middle" class="small">Next model?</text>
+
+<!-- N: end -->
+<rect x="285" y="990" width="160" height="38" rx="19" class="box"/>
+<text x="365" y="1014" text-anchor="middle" class="small">Second MATLAB closes</text>
+
+<!-- Arrows -->
+<path d="M135,214 L135,250" class="line" marker-end="url(#arrow)"/>
+<path d="M135,308 L135,344" class="line" marker-end="url(#arrow)"/>
+<path d="M135,402 L135,444" class="line" marker-end="url(#arrow)"/>
+<path d="M235,374 L256,374" class="line" marker-end="url(#arrow)"/>
+<path d="M365,402 L365,444" class="line" marker-end="url(#arrow)"/>
+<path d="M365,502 L365,542" class="line" marker-end="url(#arrow)"/>
+<!-- no: solve -->
+<path d="M465,594 L503,594" class="lineSolve" marker-end="url(#arrowSolve)"/>
+<text x="484" y="586" text-anchor="middle" class="small" style="fill:#c2410c">no</text>
+<path d="M705,594 L743,594" class="lineSolve" marker-end="url(#arrowSolve)"/>
+<path d="M845,622 L845,674" class="lineSolve" marker-end="url(#arrowSolve)"/>
+<path d="M845,732 L845,804 L707,804" class="lineSolve" marker-end="url(#arrowSolve)"/>
+<!-- yes: read -->
+<path d="M365,644 L365,804 L503,804" class="line" marker-end="url(#arrow)"/>
+<text x="375" y="684" class="small">yes: read only</text>
+<path d="M605,832 L605,874" class="line" marker-end="url(#arrow)"/>
+<path d="M505,904 L437,904" class="line" marker-end="url(#arrow)"/>
+<!-- loop -->
+<path d="M295,904 L262,904 L262,474 L273,474" class="line" marker-end="url(#arrow)"/>
+<text x="268" y="895" class="small">yes</text>
+<path d="M365,934 L365,988" class="line" marker-end="url(#arrow)"/>
+<text x="373" y="966" class="small">no</text>
+
+<!-- Notes -->
+<text x="35" y="530" class="note">The caller stays specific (for example</text>
+<text x="35" y="545" class="note">createFeaResults); everything to the</text>
+<text x="35" y="560" class="note">right is shared, in tests\common.</text>
+<text x="856" y="756" class="note">To solve again:</text>
+<text x="856" y="771" class="note">Clear Generated Data</text>
+<text x="856" y="786" class="note">in Workbench, save.</text>
+
+<!-- Name of the frame, drawn over the arrow -->
+<rect x="29" y="231" width="212" height="15" fill="#ffffff"/>
+<text x="135" y="243" text-anchor="middle" class="code">exportFeaPressureResults(job)</text>
+
+<!-- Legend -->
+<rect x="745" y="930" width="200" height="100" rx="6" fill="#ffffff" stroke="#c9d1dc" stroke-width="1.2"/>
+<path d="M760,955 L800,955" class="line"/>
+<text x="810" y="959" class="small">always</text>
+<path d="M760,980 L800,980" class="lineSolve"/>
+<text x="810" y="984" class="small">only without file.rst</text>
+<rect x="760" y="998" width="40" height="18" class="file"/>
+<text x="810" y="1012" class="small">file on disk</text>
+</svg>

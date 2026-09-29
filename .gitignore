@@ -40,6 +40,9 @@ release/
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
 
+# Test report with the figures of the tests (generateHTMLReport), made again after each test run
+tests/testreport/
+
 # Scratch folder for temporary work (scripts, Ansys runs, intermediate results)
 scratch/
 

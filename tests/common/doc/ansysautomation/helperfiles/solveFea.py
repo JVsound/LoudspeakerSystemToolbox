@@ -1,13 +1,15 @@
-"""Solve a Mechanical model and export pressure frequency responses for comp.FeaEnclosure.
+"""Export pressure frequency responses of a Workbench system for comp.FeaEnclosure, and solve the system if needed.
 
 Usage:
-    python solveFea.py <mechdb or rst file> <output folder> <named selection>=<file name> [...]
+    python solveFea.py <wbpj file> <system folder> <output folder> <named selection>=<file name> [...]
 
-With a .mechdb file, opens a copy of the model with PyMechanical (embedding) and solves its first analysis; the model
-file is not changed. With a .rst file, which is the result file of a model that is already solved, skips the solve.
-Then reads the pressure on the nodes of each named selection from the result file with PyDPF, averages it over the
-nodes and writes a tab-separated file with the columns Frequency (Hz), Amplitude (MPa), Phase Angle (deg), Real (MPa)
-and Imaginary (MPa), the format of comp.FeaEnclosure.importAnsysPressureResults. Exit code 0 means success.
+The system folder is the folder of the system in the Workbench project, for example SYS or SYS-1. When the system has
+no result file yet (<project>_files/dp0/<system folder>/MECH/file.rst), PyWorkbench starts Workbench without a window,
+updates the system, which solves it, and saves the project. Then the pressure on the nodes of each named selection is
+read from the result file with PyDPF, averaged over the nodes and written to a tab-separated file with the columns
+Frequency (Hz), Amplitude (MPa), Phase Angle (deg), Real (MPa) and Imaginary (MPa), the format of
+comp.FeaEnclosure.importAnsysPressureResults. Workbench must be closed while a system is solved. Exit code 0 means
+success.
 """
 # The text between the triple quotes above is the docstring of this file: like the help text of a MATLAB file.
 # Python prints it with help(), and main() below prints it when the arguments are missing.
@@ -29,40 +31,42 @@ ANSYS_VERSION = 261   # Ansys 2026 R1; change this with a new Ansys release
 # It gives the factor to convert a pressure in the unit of the result file to MPa.
 PRESSURE_TO_MPA = {"MPa": 1.0, "Pa": 1e-6}
 
+# Workbench script that updates one system and saves the project. It runs inside Workbench (IronPython, the language
+# of a Workbench journal), not in this Python. PROJECT_PATH and SYSTEM_NAME are filled in before it is sent.
+UPDATE_SCRIPT = r'''
+Open(FilePath="PROJECT_PATH")
+system = GetSystem(Name="SYSTEM_NAME")
+system.Update(AllDependencies=True)
+Save(Overwrite=True)
+'''
+
 
 # --- Functions --------------------------------------------------------------------------------------------------------
 # "def name(arguments):" starts a function. Python has no "end": the indented lines below belong to the function,
 # so the indentation is part of the syntax. The same holds for if, for, try and with.
 
-def solve(mechdbFile):
-    """Solve the first analysis of the model and return the path of its result file."""
-    # Imported here and not at the top: loading PyMechanical takes several seconds, and reading a result file with
-    # readAnsysFea does not need it.
-    import ansys.mechanical.core as mech
-    t0 = time.time()                            # like tic: remember the start time
-    app = mech.App(version=ANSYS_VERSION)       # start Mechanical inside this Python process (about 30 s)
-    # try/finally: the lines under finally always run, also when an error occurs in the try block. So Mechanical is
+def solve(workbenchFile, systemFolder, rstFile):
+    """Update one system of the Workbench project with PyWorkbench, which solves it, and save the project."""
+    # Imported here and not at the top: reading a result file that exists already does not need PyWorkbench.
+    from ansys.workbench.core import launch_workbench
+    # Workbench names the system "SYS 1" and its folder "SYS-1": the folder name with a space instead of the dash.
+    systemName = systemFolder.replace("-", " ")
+    # Workbench wants forward slashes in the path; .replace swaps them, like strrep in MATLAB.
+    script = UPDATE_SCRIPT.replace("PROJECT_PATH", workbenchFile.replace("\\", "/")).replace("SYSTEM_NAME", systemName)
+    t0 = time.time()                                            # like tic: remember the start time
+    wb = launch_workbench(show_gui=False, version=str(ANSYS_VERSION))   # Workbench without a window (about 20 s)
+    # try/finally: the lines under finally always run, also when an error occurs in the try block. So Workbench is
     # always closed. In MATLAB you would use try/catch or onCleanup for this.
     try:
-        app.open(mechdbFile)                                  # open the model, like File > Open in Mechanical
-        # The dots walk down the tree of Mechanical: Project > Model > Analyses. [0] is the first analysis:
-        # Python counts from 0, MATLAB from 1.
-        analysis = app.DataModel.Project.Model.Analyses[0]
-        analysis.Solution.ClearGeneratedData()                # remove old results, so the solve starts clean
-        analysis.Solution.Solve(True)                         # solve; True means: wait until the solve is done
-        state = str(analysis.Solution.ObjectState)            # "Solved" when all went well; str() makes it text
-        # Save before closing: without it Mechanical deletes the result folder on close.
-        app.save()
-        rstFile = analysis.ResultFileName                     # full path of the result file (file.rst)
+        wb.run_script_string(script)                            # open, update (solve) and save, inside Workbench
     finally:
-        app.close()                                           # close Mechanical
-    # Check the result. "!=" means "not equal" (~= in MATLAB), "or" and "not" are || and ~ in MATLAB.
-    if state != "Solved" or not os.path.isfile(rstFile):
+        wb.exit()                                               # close Workbench
+    # Check the result. "not" is ~ in MATLAB.
+    if not os.path.isfile(rstFile):
         # raise throws an error, like error() in MATLAB. "%s" in the text is filled in with the values after "%",
         # like sprintf in MATLAB.
-        raise RuntimeError("Solve failed: state %s, result file %s" % (state, rstFile))
-    print("Solved in %.0f s: %s" % (time.time() - t0, rstFile))   # like fprintf; time.time() - t0 is like toc
-    return rstFile                                    # return gives the output of the function
+        raise RuntimeError("Solve of %s failed: no result file %s" % (systemFolder, rstFile))
+    print("Solved %s in %.0f s: %s" % (systemFolder, time.time() - t0, rstFile))   # time.time() - t0 is like toc
 
 
 def exportPressure(rstFile, outDir, selections):
@@ -112,27 +116,21 @@ def exportPressure(rstFile, outDir, selections):
 def main(args):
     """Run the script with the command line arguments args; return the exit code."""
     # args is a list of texts: the words after "python solveFea.py" on the command line.
-    if len(args) < 3:
+    if len(args) < 4:
         print(__doc__)                                  # too few arguments: print the usage text at the top
         return 2
     # args[0] is the first argument, args[1] the second. os.path.abspath makes a full path of a relative one.
-    # Two names on the left of "=" get the two values on the right.
-    inFile, outDir = os.path.abspath(args[0]), os.path.abspath(args[1])
-    # args[2:] is the list from the third argument to the end, like args(3:end) in MATLAB. The expression in square
+    workbenchFile, systemFolder, outDir = os.path.abspath(args[0]), args[1], os.path.abspath(args[2])
+    # args[3:] is the list from the fourth argument to the end, like args(4:end) in MATLAB. The expression in square
     # brackets is a "list comprehension": a compact for loop that builds a list. It splits each "name=file" at the
     # first "=" into the pair [name, file].
-    selections = [a.split("=", 1) for a in args[2:]]
+    selections = [a.split("=", 1) for a in args[3:]]
+    # The result file of the system: <project>_files/dp0/<system folder>/MECH/file.rst. os.path.splitext removes the
+    # extension .wbpj, like fileparts in MATLAB.
+    rstFile = os.path.join(os.path.splitext(workbenchFile)[0] + "_files", "dp0", systemFolder, "MECH", "file.rst")
+    if not os.path.isfile(rstFile):                     # no result yet: solve the system in Workbench first
+        solve(workbenchFile, systemFolder, rstFile)
     os.makedirs(outDir, exist_ok=True)                  # make the output folder; no error if it exists already
-    if inFile.lower().endswith(".rst"):                 # a result file: the model is solved already
-        rstFile = inFile
-    else:                                               # a model file: solve it first
-        # Solve a copy in the output folder, so that the model file and its result folder stay untouched.
-        workFile = os.path.join(outDir, "model.mechdb")
-        # "with" opens the files and closes them again at the end of the block, also after an error. "rb" and "wb"
-        # mean read and write as bytes, so the file is copied exactly.
-        with open(inFile, "rb") as src, open(workFile, "wb") as dst:
-            dst.write(src.read())
-        rstFile = solve(workFile)
     exportPressure(rstFile, outDir, selections)
     return 0                                            # exit code 0: success
 
@@ -143,10 +141,10 @@ def main(args):
 if __name__ == "__main__":
     try:
         # sys.argv is the list of command line words; sys.argv[0] is the name of this script, so [1:] takes the rest.
-        # sys.exit ends Python with the exit code that main returns; runAnsysFea reads it as status.
+        # sys.exit ends Python with the exit code that main returns; readAnsysFea reads it as status.
         sys.exit(main(sys.argv[1:]))
     except Exception as err:
-        # Any error ends up here: print it to the error output and end with exit code 1, so that runAnsysFea
+        # Any error ends up here: print it to the error output and end with exit code 1, so that readAnsysFea
         # throws an error in MATLAB.
         print("Error: %s" % err, file=sys.stderr)
         sys.exit(1)
