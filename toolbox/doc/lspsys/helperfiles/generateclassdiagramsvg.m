@@ -98,13 +98,18 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
         {"Methods", {plain("tae, tarad, micTransfer"), ...
             static("importAnsysPressureResults(filename)")}}}});
 
+    semiInductanceDriverBox = struct("x", 1340, "y", 40, "w", 300, "name", "comp.SemiInductanceDriver", ...
+        "stereo", "", "italic", false, "dashed", false, "sections", {{ ...
+        {"Properties", {plain("SemiInductance: double")}}, ...
+        {"Methods", {plain("zeb(f)")}}}});
+
     boxes = {lspsysBox, resultBox, driverBox, enclosureBox, closedBoxBox, bassReflexBox, hornBox, ...
-        feaEnclosureBox};
+        feaEnclosureBox, semiInductanceDriverBox};
 
     if collapsed
         % x, y and width per box, in the order of the boxes above
         collapsedLayout = [400 40 240; 40 40 240; 760 40 240; 400 190 240; ...
-            40 340 240; 310 340 240; 580 340 240; 850 340 240];
+            40 340 240; 310 340 240; 580 340 240; 850 340 240; 1060 40 260];
         for k = 1:numel(boxes)
             boxes{k}.x = collapsedLayout(k, 1);
             boxes{k}.y = collapsedLayout(k, 2);
@@ -114,11 +119,11 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
         subclassY = 340;
         driverArrowOffset = 31;
         resultArrowOffset = 23;
-        canvasWidth = 1130;
+        canvasWidth = 1360;
     else
         driverArrowOffset = 80;
         resultArrowOffset = 60;
-        canvasWidth = 1320;
+        canvasWidth = 1680;
     end
 
     boxSvg = strings(numel(boxes), 1);
@@ -167,6 +172,12 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
         connectors(end+1) = sprintf('<path d="M%d,%d L%d,%d" fill="none" stroke="%s" stroke-width="1.6"/>', ...
             centerX, busY, centerX, subclassY, ink);
     end
+
+    % comp.SemiInductanceDriver, right of comp.Driver, inherits from it
+    subDriverBox = boxes{9};
+    inheritY = subDriverBox.y + round(min(boxHeight(9), boxHeight(3)) / 2);
+    connectors(end+1) = sprintf(['<path d="M%d,%d L%d,%d" fill="none" stroke="%s" stroke-width="1.6" ' ...
+        'marker-end="url(#inherit)"/>'], subDriverBox.x, inheritY, driverBox.x + driverBox.w, inheritY, ink);
 
     legendY = subclassY + max(boxHeight(5:8)) + 50;
     legend = strings(0, 1);

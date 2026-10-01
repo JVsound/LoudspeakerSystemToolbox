@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1130" height="530" viewBox="0 0 1130 530" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="530" viewBox="0 0 1360 530" role="img">
 <title>Loudspeaker System Toolbox class diagram</title>
 <defs>
 <marker id="assoc" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#2b3646" stroke-width="1.6"/></marker>
@@ -18,6 +18,7 @@
 <path d="M430,300 L430,340" fill="none" stroke="#2b3646" stroke-width="1.6"/>
 <path d="M700,300 L700,340" fill="none" stroke="#2b3646" stroke-width="1.6"/>
 <path d="M970,300 L970,340" fill="none" stroke="#2b3646" stroke-width="1.6"/>
+<path d="M1060,63 L1000,63" fill="none" stroke="#2b3646" stroke-width="1.6" marker-end="url(#inherit)"/>
 <clipPath id="clip1"><rect x="400" y="40" width="240" height="46" rx="6"/></clipPath>
 <rect x="400" y="40" width="240" height="46" rx="6" fill="#ffffff"/>
 <g clip-path="url(#clip1)">
@@ -85,6 +86,14 @@
 </g>
 <text x="970" y="372" text-anchor="middle" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#14233b">comp.FeaEnclosure</text>
 <rect x="850" y="340" width="240" height="46" rx="6" fill="none" stroke="#4a5a70" stroke-width="1.6"/>
+<clipPath id="clip9"><rect x="1060" y="40" width="260" height="46" rx="6"/></clipPath>
+<rect x="1060" y="40" width="260" height="46" rx="6" fill="#ffffff"/>
+<g clip-path="url(#clip9)">
+<rect x="1060" y="40" width="260" height="46" fill="#e6eefb"/>
+<rect x="1060" y="40" width="260" height="5" fill="#1f4e9c"/>
+</g>
+<text x="1190" y="72" text-anchor="middle" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#14233b">comp.SemiInductanceDriver</text>
+<rect x="1060" y="40" width="260" height="46" rx="6" fill="none" stroke="#4a5a70" stroke-width="1.6"/>
 <rect x="40" y="452" width="34" height="20" rx="3" fill="#ffffff" stroke="#7a8797" stroke-width="1.5" stroke-dasharray="6 4"/>
 <text x="84" y="467" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="13" fill="#2b3646">work in progress (stub or not yet implemented)</text>
 <text x="420" y="467" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="13" font-style="italic" fill="#2b3646">italic: abstract</text>

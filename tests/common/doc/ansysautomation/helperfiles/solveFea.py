@@ -18,6 +18,7 @@ success.
 # Python has few built-in functions; everything else comes from modules that you import first. MATLAB has everything
 # on the path, Python needs an import per module.
 import os    # operating system: paths, folders, environment variables (like fullfile, isfile, getenv in MATLAB)
+import re    # regular expressions: search patterns in text (like regexp in MATLAB)
 import sys   # the Python process itself: command line arguments (sys.argv) and the exit code (sys.exit)
 import time  # clock: time.time() gives the time in seconds, used like tic/toc
 
@@ -45,12 +46,28 @@ Save(Overwrite=True)
 # "def name(arguments):" starts a function. Python has no "end": the indented lines below belong to the function,
 # so the indentation is part of the syntax. The same holds for if, for, try and with.
 
+def findSystemName(workbenchFile, systemFolder):
+    """Return the name of the system in the Workbench project that has the folder systemFolder."""
+    # The name of a system ("SYS 1") and its folder ("SYS-3") need not match: Workbench keeps the folder when systems
+    # are removed or changed. The .wbpj file holds both, per system, in an <Object> element: the name in
+    # <object-name> and the folder in "UniqueSystemDirectoryName" in <member-data>.
+    with open(workbenchFile, encoding="utf-8") as file:     # read the whole project file as text
+        text = file.read()
+    # re.findall returns, for each match, the two parts between parentheses: the name and the folder. [^<]* means any
+    # characters except "<", also line ends, so the search stays inside one <object-name> and one <member-data>.
+    pattern = (r'<object-name valType="String">([^<]*)</object-name>\s*<member-data[^>]*>[^<]*?'
+               r'"UniqueSystemDirectoryName": "([^"]*)"')
+    for name, folder in re.findall(pattern, text):
+        if folder == systemFolder:
+            return name
+    raise ValueError("No system with the folder %s in %s" % (systemFolder, workbenchFile))
+
+
 def solve(workbenchFile, systemFolder, rstFile):
     """Update one system of the Workbench project with PyWorkbench, which solves it, and save the project."""
     # Imported here and not at the top: reading a result file that exists already does not need PyWorkbench.
     from ansys.workbench.core import launch_workbench
-    # Workbench names the system "SYS 1" and its folder "SYS-1": the folder name with a space instead of the dash.
-    systemName = systemFolder.replace("-", " ")
+    systemName = findSystemName(workbenchFile, systemFolder)    # for example "SYS 1" for the folder "SYS-3"
     # Workbench wants forward slashes in the path; .replace swaps them, like strrep in MATLAB.
     script = UPDATE_SCRIPT.replace("PROJECT_PATH", workbenchFile.replace("\\", "/")).replace("SYSTEM_NAME", systemName)
     t0 = time.time()                                            # like tic: remember the start time

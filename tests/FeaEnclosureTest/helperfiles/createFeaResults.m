@@ -3,17 +3,17 @@
 %%
 %[text] ## Job
 %[text:table]
-%[text] | Subfolder | System | Display name in Workbench |
+%[text] | Subfolder | System folder | Display name in Workbench |
 %[text] | --- | --- | --- |
-%[text] | `full200l` | `SYS` | ClosedBox 200L |
-%[text] | `quartersymmetry200l` | `SYS-1` | ClosedBox 200L QuarterSymmetry |
+%[text] | `full100l` | `SYS` | ClosedBox 100L |
+%[text] | `quartersymmetry100l` | `SYS-3` | ClosedBox 100L Quarter symmetry |
 %[text] | `full50l` | `SYS-2` | ClosedBox 50L |
-%[text] | `quartersymmetry50l` | `SYS-3` | ClosedBox 50L QuarterSymmetry |
 %[text:table]
+%[text] The system folder is the folder of the system in `AnsysFeaValidationFiles_files\dp0`. It need not match the name of the system in Workbench: the quarter-symmetry system is called `SYS 1` but has the folder `SYS-3`.
 root = currentProject().RootFolder;
 helperFolder = fullfile(root,"tests","FeaEnclosureTest","helperfiles");
 job.WorkbenchFile = fullfile(helperFolder,"fea","AnsysFeaValidationFiles.wbpj");
-job.Models = ["full200l","SYS"; "quartersymmetry200l","SYS-1"; "full50l","SYS-2"; "quartersymmetry50l","SYS-3"];
+job.Models = ["full100l","SYS"; "quartersymmetry100l","SYS-3"; "full50l","SYS-2"];
 job.Selections = ["DiaphragmRear","pRear.txt"; "DiaphragmFront","pFront.txt"; "MicRadius","pMic.txt"];
 job.OutFolder = helperFolder;
 %%

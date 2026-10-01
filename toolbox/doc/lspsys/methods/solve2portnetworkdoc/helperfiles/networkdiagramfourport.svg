@@ -2,26 +2,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1740" height="320" viewBox="0 0 1740 320" role="img">
 <title>Loudspeaker System Toolbox 2-port network diagram</title>
 <rect width="100%" height="100%" fill="#ffffff"/>
-<g transform="translate(60,100) rotate(90) scale(0.576132) translate(-0,-81)">
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="2.60357" cx="121.5" cy="79.86" rx="60.54" ry="60.54"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" d=" M 83.7,67.5 L 83.7,94.5"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" d=" M 70.2,81 L 97.2,81"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" d=" M 183.6,81 L 243,81"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" d=" M 59.4,81 L 0,81"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" d=" M 162,67.5 L 162,94.5"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.60357" transform="matrix(0.0871557427,-0.9961946981,0.9961946981,0.0871557427,30.2252243141,194.9771096704)" d=" M 159.02,80.99 Q 140.26,53.63 121.49,80.99 Q 102.74,108.35 83.98,80.99"/>
+<polyline points="60,100 60,144.692" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<g transform="translate(60,144.692) rotate(90) scale(0.2083) translate(-0,-81)">
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="7.20115" cx="121.5" cy="79.86" rx="60.54" ry="60.54"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" d=" M 83.7,67.5 L 83.7,94.5"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" d=" M 70.2,81 L 97.2,81"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" d=" M 183.6,81 L 243,81"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" d=" M 59.4,81 L 0,81"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" d=" M 162,67.5 L 162,94.5"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="7.20115" transform="matrix(0.0871557427,-0.9961946981,0.9961946981,0.0871557427,30.2252243141,194.9771096704)" d=" M 159.02,80.99 Q 140.26,53.63 121.49,80.99 Q 102.74,108.35 83.98,80.99"/>
 </g>
+<polyline points="60,195.308 60,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <path d="M95,95 L105,100 L95,105 z" fill="#1f4e9c"/>
 <rect x="140" y="40" width="220" height="250" rx="4" fill="none" stroke="#8a96a8" stroke-width="1.5"/>
-<g transform="translate(160,100) rotate(0) scale(0.2946) translate(-5.4,-90)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="5.4,90 37.8,90 48.6,68.4 70.2,111.6 91.8,68.4 113.4,111.6 135,68.4 156.6,111.6 178.2,68.4 199.8,111.6 210.6,90 243,90"/>
+<g transform="translate(160,100) rotate(0) scale(0.294566) translate(-5.4,-90)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09224" points="5.4,90 37.8,90 48.6,68.4 70.2,111.6 91.8,68.4 113.4,111.6 135,68.4 156.6,111.6 178.2,68.4 199.8,111.6 210.6,90 243,90"/>
 </g>
-<g transform="translate(255,100) rotate(0) scale(0.2946) translate(-5.4,-90)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="37.8,90 5.4,90"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="182.82,90 216,90"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M37.8,90 C37.2214,84.5185 38.5131,79.0023 41.4653,74.3476 C44.4176,69.6929 48.8569,66.1731 54.0621,64.3599 C59.2673,62.5467 64.9327,62.5467 70.1379,64.3599 C75.3431,66.1731 79.7824,69.6929 82.7347,74.3476 C85.6869,79.0023 86.9786,84.5185 86.4,90 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M86.4,90 C85.8214,84.5185 87.1131,79.0023 90.0653,74.3476 C93.0176,69.6929 97.4569,66.1731 102.662,64.3599 C107.867,62.5467 113.533,62.5467 118.738,64.3599 C123.943,66.1731 128.382,69.6929 131.335,74.3476 C134.287,79.0023 135.579,84.5185 135,90 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M135,90 C134.421,84.5185 135.713,79.0023 138.665,74.3476 C141.618,69.6929 146.057,66.1731 151.262,64.3599 C156.467,62.5467 162.133,62.5467 167.338,64.3599 C172.543,66.1731 176.982,69.6929 179.935,74.3476 C182.887,79.0023 184.179,84.5185 183.6,90 "/>
+<g transform="translate(255,100) rotate(0) scale(0.296724) translate(-5.4,-90)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.05521" points="37.8,90 5.4,90"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.05521" points="182.82,90 216,90"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M37.8,90 C37.2214,84.5185 38.5131,79.0023 41.4653,74.3476 C44.4176,69.6929 48.8569,66.1731 54.0621,64.3599 C59.2673,62.5467 64.9327,62.5467 70.1379,64.3599 C75.3431,66.1731 79.7824,69.6929 82.7347,74.3476 C85.6869,79.0023 86.9786,84.5185 86.4,90 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M86.4,90 C85.8214,84.5185 87.1131,79.0023 90.0653,74.3476 C93.0176,69.6929 97.4569,66.1731 102.662,64.3599 C107.867,62.5467 113.533,62.5467 118.738,64.3599 C123.943,66.1731 128.382,69.6929 131.335,74.3476 C134.287,79.0023 135.579,84.5185 135,90 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M135,90 C134.421,84.5185 135.713,79.0023 138.665,74.3476 C141.618,69.6929 146.057,66.1731 151.262,64.3599 C156.467,62.5467 162.133,62.5467 167.338,64.3599 C172.543,66.1731 176.982,69.6929 179.935,74.3476 C182.887,79.0023 184.179,84.5185 183.6,90 "/>
 </g>
 <polyline points="60,100 160,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="230,100 255,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
@@ -29,36 +31,40 @@
 <polyline points="60,240 445,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <path d="M390,95 L400,100 L390,105 z" fill="#1f4e9c"/>
 <rect x="430" y="40" width="220" height="250" rx="4" fill="none" stroke="#8a96a8" stroke-width="1.5"/>
-<g transform="translate(445,100) rotate(0) scale(0.508351) translate(-5.4,-141.3)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="81,141.3 5.4,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="81,416.7 5.4,416.7"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="377.58,141.3 297,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="377.58,416.7 297,416.7"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="81,416.7 81,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="297,416.7 297,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="261.9,171 261.9,154.8"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="261.9,171 248.4,171"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M118.8,171 C118.8,171 118.841,170.969 119.488,170.506 C120.134,170.043 121.378,169.154 123.365,167.752 C125.353,166.349 128.077,164.439 131.395,162.154 C134.714,159.87 138.618,157.219 142.805,154.463 C146.992,151.706 151.453,148.852 155.853,146.198 C160.253,143.545 164.582,141.1 168.598,139.106 C172.615,137.113 176.31,135.578 179.663,134.598 C183.016,133.618 186.019,133.2 189,133.2 C191.981,133.2 195.014,133.618 198.437,134.598 C201.86,135.578 205.665,137.113 209.823,139.106 C213.982,141.1 218.486,143.545 223.075,146.198 C227.665,148.852 232.33,151.706 236.714,154.463 C241.098,157.219 245.192,159.87 248.673,162.154 C252.154,164.439 255.014,166.349 257.102,167.752 C259.191,169.154 260.497,170.043 261.177,170.506 C261.857,170.969 261.9,171 261.9,171 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M81,198 C98.005,197.712 114.656,202.873 128.516,212.73 C142.376,222.586 152.718,236.619 158.029,252.777 C163.339,268.934 163.339,286.366 158.029,302.523 C152.718,318.681 142.376,332.714 128.516,342.57 C114.656,352.427 98.005,357.588 81,357.3 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M297,357.3 C279.995,357.588 263.344,352.427 249.484,342.57 C235.624,332.714 225.282,318.681 219.971,302.523 C214.661,286.366 214.661,268.934 219.971,252.777 C225.282,236.619 235.624,222.586 249.484,212.73 C263.344,202.873 279.995,197.712 297,198 "/>
+<g transform="translate(445,130.278) rotate(0) scale(0.288467) translate(-5.4,-141.3)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="81,141.3 5.4,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="81,416.7 5.4,416.7"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="377.58,141.3 297,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="377.58,416.7 297,416.7"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="81,416.7 81,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="297,416.7 297,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="261.9,171 261.9,154.8"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="261.9,171 248.4,171"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M118.8,171 C118.8,171 118.841,170.969 119.488,170.506 C120.134,170.043 121.378,169.154 123.365,167.752 C125.353,166.349 128.077,164.439 131.395,162.154 C134.714,159.87 138.618,157.219 142.805,154.463 C146.992,151.706 151.453,148.852 155.853,146.198 C160.253,143.545 164.582,141.1 168.598,139.106 C172.615,137.113 176.31,135.578 179.663,134.598 C183.016,133.618 186.019,133.2 189,133.2 C191.981,133.2 195.014,133.618 198.437,134.598 C201.86,135.578 205.665,137.113 209.823,139.106 C213.982,141.1 218.486,143.545 223.075,146.198 C227.665,148.852 232.33,151.706 236.714,154.463 C241.098,157.219 245.192,159.87 248.673,162.154 C252.154,164.439 255.014,166.349 257.102,167.752 C259.191,169.154 260.497,170.043 261.177,170.506 C261.857,170.969 261.9,171 261.9,171 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M81,198 C98.005,197.712 114.656,202.873 128.516,212.73 C142.376,222.586 152.718,236.619 158.029,252.777 C163.339,268.934 163.339,286.366 158.029,302.523 C152.718,318.681 142.376,332.714 128.516,342.57 C114.656,352.427 98.005,357.588 81,357.3 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M297,357.3 C279.995,357.588 263.344,352.427 249.484,342.57 C235.624,332.714 225.282,318.681 219.971,302.523 C214.661,286.366 214.661,268.934 219.971,252.777 C225.282,236.619 235.624,222.586 249.484,212.73 C263.344,202.873 279.995,197.712 297,198 "/>
 </g>
+<polyline points="445,100 445,130.278" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="445,209.722 445,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="552.483,130.278 552.483,100 634,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="552.483,209.722 552.483,240 634,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <path d="M680,95 L690,100 L680,105 z" fill="#1f4e9c"/>
 <rect x="720" y="40" width="300" height="250" rx="4" fill="none" stroke="#8a96a8" stroke-width="1.5"/>
-<g transform="translate(740,100) rotate(0) scale(0.2946) translate(-5.4,-90)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="37.8,90 5.4,90"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="182.82,90 216,90"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M37.8,90 C37.2214,84.5185 38.5131,79.0023 41.4653,74.3476 C44.4176,69.6929 48.8569,66.1731 54.0621,64.3599 C59.2673,62.5467 64.9327,62.5467 70.1379,64.3599 C75.3431,66.1731 79.7824,69.6929 82.7347,74.3476 C85.6869,79.0023 86.9786,84.5185 86.4,90 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M86.4,90 C85.8214,84.5185 87.1131,79.0023 90.0653,74.3476 C93.0176,69.6929 97.4569,66.1731 102.662,64.3599 C107.867,62.5467 113.533,62.5467 118.738,64.3599 C123.943,66.1731 128.382,69.6929 131.335,74.3476 C134.287,79.0023 135.579,84.5185 135,90 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="5.09165" d="M135,90 C134.421,84.5185 135.713,79.0023 138.665,74.3476 C141.618,69.6929 146.057,66.1731 151.262,64.3599 C156.467,62.5467 162.133,62.5467 167.338,64.3599 C172.543,66.1731 176.982,69.6929 179.935,74.3476 C182.887,79.0023 184.179,84.5185 183.6,90 "/>
+<g transform="translate(740,100) rotate(0) scale(0.296724) translate(-5.4,-90)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.05521" points="37.8,90 5.4,90"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.05521" points="182.82,90 216,90"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M37.8,90 C37.2214,84.5185 38.5131,79.0023 41.4653,74.3476 C44.4176,69.6929 48.8569,66.1731 54.0621,64.3599 C59.2673,62.5467 64.9327,62.5467 70.1379,64.3599 C75.3431,66.1731 79.7824,69.6929 82.7347,74.3476 C85.6869,79.0023 86.9786,84.5185 86.4,90 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M86.4,90 C85.8214,84.5185 87.1131,79.0023 90.0653,74.3476 C93.0176,69.6929 97.4569,66.1731 102.662,64.3599 C107.867,62.5467 113.533,62.5467 118.738,64.3599 C123.943,66.1731 128.382,69.6929 131.335,74.3476 C134.287,79.0023 135.579,84.5185 135,90 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.05521" d="M135,90 C134.421,84.5185 135.713,79.0023 138.665,74.3476 C141.618,69.6929 146.057,66.1731 151.262,64.3599 C156.467,62.5467 162.133,62.5467 167.338,64.3599 C172.543,66.1731 176.982,69.6929 179.935,74.3476 C182.887,79.0023 184.179,84.5185 183.6,90 "/>
 </g>
-<g transform="translate(825,100) rotate(0) scale(0.2946) translate(-5.4,-90)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="5.4,90 37.8,90 48.6,68.4 70.2,111.6 91.8,68.4 113.4,111.6 135,68.4 156.6,111.6 178.2,68.4 199.8,111.6 210.6,90 243,90"/>
+<g transform="translate(825,100) rotate(0) scale(0.294566) translate(-5.4,-90)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09224" points="5.4,90 37.8,90 48.6,68.4 70.2,111.6 91.8,68.4 113.4,111.6 135,68.4 156.6,111.6 178.2,68.4 199.8,111.6 210.6,90 243,90"/>
 </g>
-<g transform="translate(920,100) rotate(0) scale(0.2946) translate(-9,-90)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="9,90 79.2,90"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="5.09165" points="100.8,90 171,90"/>
-<rect fill="#1f4e9c" stroke="#1f4e9c" stroke-width="5.09165" height="64.8" width="5.4" x="79.2" y="57.6"/>
-<rect fill="#1f4e9c" stroke="#1f4e9c" stroke-width="5.09165" height="64.8" width="5.4" x="95.4" y="57.6"/>
+<g transform="translate(920,100) rotate(0) scale(0.308593) translate(-9,-90)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="4.86078" points="9,90 79.2,90"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="4.86078" points="100.8,90 171,90"/>
+<rect fill="#1f4e9c" stroke="#1f4e9c" stroke-width="4.86078" height="64.8" width="5.4" x="79.2" y="57.6"/>
+<rect fill="#1f4e9c" stroke="#1f4e9c" stroke-width="4.86078" height="64.8" width="5.4" x="95.4" y="57.6"/>
 </g>
 <polyline points="634,100 740,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="802,100 825,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
@@ -67,56 +73,60 @@
 <polyline points="634,240 1105,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <path d="M1050,95 L1060,100 L1050,105 z" fill="#1f4e9c"/>
 <rect x="1090" y="40" width="220" height="250" rx="4" fill="none" stroke="#8a96a8" stroke-width="1.5"/>
-<g transform="translate(1105,100) rotate(0) scale(0.508351) translate(-5.4,-141.3)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="149.94,141.3 5.4,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="149.94,416.7 5.4,416.7"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="149.94,141.3 149.94,148.26 149.94,155.1 149.94,162 149.94,168.84"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="149.94,416.7 149.94,389.16"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="377.58,141.3 219.3,141.3"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="218.7,141.3 218.7,168.84"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="377.58,416.7 219.3,416.7"/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="2.95071" points="218.7,416.7 218.7,389.16"/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M149.94,389.16 C142.636,389.16 135.631,386.258 130.466,381.094 C125.302,375.929 122.4,368.924 122.4,361.62 C122.4,354.316 125.302,347.311 130.466,342.146 C135.631,336.982 142.636,334.08 149.94,334.08 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M149.94,334.08 C142.636,334.08 135.631,331.178 130.466,326.014 C125.302,320.849 122.4,313.844 122.4,306.54 C122.4,299.236 125.302,292.231 130.466,287.066 C135.631,281.902 142.636,279 149.94,279 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M149.94,279 C142.636,279 135.631,276.098 130.466,270.934 C125.302,265.769 122.4,258.764 122.4,251.46 C122.4,244.156 125.302,237.151 130.466,231.986 C135.631,226.822 142.636,223.92 149.94,223.92 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M149.94,223.92 C142.636,223.92 135.631,221.018 130.466,215.854 C125.302,210.689 122.4,203.684 122.4,196.38 C122.4,189.076 125.302,182.071 130.466,176.906 C135.631,171.742 142.636,168.84 149.94,168.84 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M219.42,169.74 C226.724,169.74 233.729,172.642 238.894,177.806 C244.058,182.971 246.96,189.976 246.96,197.28 C246.96,204.584 244.058,211.589 238.894,216.754 C233.729,221.918 226.724,224.82 219.42,224.82 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M219.42,224.82 C226.724,224.82 233.729,227.722 238.894,232.886 C244.058,238.051 246.96,245.056 246.96,252.36 C246.96,259.664 244.058,266.669 238.894,271.834 C233.729,276.998 226.724,279.9 219.42,279.9 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M219.42,279.9 C226.724,279.9 233.729,282.802 238.894,287.966 C244.058,293.131 246.96,300.136 246.96,307.44 C246.96,314.744 244.058,321.749 238.894,326.914 C233.729,332.078 226.724,334.98 219.42,334.98 "/>
-<path fill="none" stroke="#1f4e9c" stroke-width="2.95071" d="M219.42,334.98 C226.724,334.98 233.729,337.882 238.894,343.046 C244.058,348.211 246.96,355.216 246.96,362.52 C246.96,369.824 244.058,376.829 238.894,381.994 C233.729,387.158 226.724,390.06 219.42,390.06 "/>
-<ellipse fill="#1f4e9c" stroke="#1f4e9c" stroke-width="2.95071" cx="86.4" cy="173.7" rx="6.84" ry="6.96"/>
-<ellipse fill="#1f4e9c" stroke="#1f4e9c" stroke-width="2.95071" cx="280.8" cy="173.7" rx="6.84" ry="6.96"/>
+<g transform="translate(1105,130.278) rotate(0) scale(0.288467) translate(-5.4,-141.3)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="149.94,141.3 5.4,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="149.94,416.7 5.4,416.7"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="149.94,141.3 149.94,148.26 149.94,155.1 149.94,162 149.94,168.84"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="149.94,416.7 149.94,389.16"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="377.58,141.3 219.3,141.3"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="218.7,141.3 218.7,168.84"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="377.58,416.7 219.3,416.7"/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="5.1999" points="218.7,416.7 218.7,389.16"/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M149.94,389.16 C142.636,389.16 135.631,386.258 130.466,381.094 C125.302,375.929 122.4,368.924 122.4,361.62 C122.4,354.316 125.302,347.311 130.466,342.146 C135.631,336.982 142.636,334.08 149.94,334.08 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M149.94,334.08 C142.636,334.08 135.631,331.178 130.466,326.014 C125.302,320.849 122.4,313.844 122.4,306.54 C122.4,299.236 125.302,292.231 130.466,287.066 C135.631,281.902 142.636,279 149.94,279 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M149.94,279 C142.636,279 135.631,276.098 130.466,270.934 C125.302,265.769 122.4,258.764 122.4,251.46 C122.4,244.156 125.302,237.151 130.466,231.986 C135.631,226.822 142.636,223.92 149.94,223.92 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M149.94,223.92 C142.636,223.92 135.631,221.018 130.466,215.854 C125.302,210.689 122.4,203.684 122.4,196.38 C122.4,189.076 125.302,182.071 130.466,176.906 C135.631,171.742 142.636,168.84 149.94,168.84 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M219.42,169.74 C226.724,169.74 233.729,172.642 238.894,177.806 C244.058,182.971 246.96,189.976 246.96,197.28 C246.96,204.584 244.058,211.589 238.894,216.754 C233.729,221.918 226.724,224.82 219.42,224.82 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M219.42,224.82 C226.724,224.82 233.729,227.722 238.894,232.886 C244.058,238.051 246.96,245.056 246.96,252.36 C246.96,259.664 244.058,266.669 238.894,271.834 C233.729,276.998 226.724,279.9 219.42,279.9 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M219.42,279.9 C226.724,279.9 233.729,282.802 238.894,287.966 C244.058,293.131 246.96,300.136 246.96,307.44 C246.96,314.744 244.058,321.749 238.894,326.914 C233.729,332.078 226.724,334.98 219.42,334.98 "/>
+<path fill="none" stroke="#1f4e9c" stroke-width="5.1999" d="M219.42,334.98 C226.724,334.98 233.729,337.882 238.894,343.046 C244.058,348.211 246.96,355.216 246.96,362.52 C246.96,369.824 244.058,376.829 238.894,381.994 C233.729,387.158 226.724,390.06 219.42,390.06 "/>
+<ellipse fill="#1f4e9c" stroke="#1f4e9c" stroke-width="5.1999" cx="86.4" cy="173.7" rx="6.84" ry="6.96"/>
+<ellipse fill="#1f4e9c" stroke="#1f4e9c" stroke-width="5.1999" cx="280.8" cy="173.7" rx="6.84" ry="6.96"/>
 </g>
+<polyline points="1105,100 1105,130.278" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="1105,209.722 1105,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="1212.48,130.278 1212.48,100 1294,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
+<polyline points="1212.48,209.722 1212.48,240 1294,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <rect x="1370" y="40" width="240" height="250" rx="4" fill="none" stroke="#8a96a8" stroke-width="1.5"/>
 <rect x="1455" y="85" width="70" height="170" rx="3" fill="#ffffff" stroke="#1f4e9c" stroke-width="1.5"/>
 <text x="1490" y="174" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#44546a">4-ports</text>
 <polyline points="1294,100 1455,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="1294,240 1455,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="1430,170 1455,170" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(1430,170) rotate(180) scale(0.015) translate(-16,-1417)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="16,1417 1228,1417 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2645,1133 2645,1700 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2173,755 2173,2078 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1700,377 1700,2456 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1228,0 1228,2834 "/>
+<g transform="translate(1430,170) rotate(180) scale(0.0167864) translate(-16,-1417)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="16,1417 1228,1417 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2645,1133 2645,1700 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2173,755 2173,2078 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1700,377 1700,2456 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1228,0 1228,2834 "/>
 </g>
 <polyline points="1525,170 1550,170" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(1550,170) rotate(0) scale(0.015) translate(-16,-1417)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="16,1417 1228,1417 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2645,1133 2645,1700 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2173,755 2173,2078 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1700,377 1700,2456 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1228,0 1228,2834 "/>
+<g transform="translate(1550,170) rotate(0) scale(0.0167864) translate(-16,-1417)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="16,1417 1228,1417 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2645,1133 2645,1700 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2173,755 2173,2078 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1700,377 1700,2456 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1228,0 1228,2834 "/>
 </g>
 <polyline points="1525,100 1680,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(1680,100) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(1680,100) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <polyline points="1525,240 1680,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(1680,240) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(1680,240) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <path d="M1335,95 L1345,100 L1335,105 z" fill="#1f4e9c"/>
 <path d="M1345,235 L1335,240 L1345,245 z" fill="#1f4e9c"/>

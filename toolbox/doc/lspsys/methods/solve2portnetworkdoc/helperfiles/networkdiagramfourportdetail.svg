@@ -15,39 +15,39 @@
 <path d="M440,235 L430,240 L440,245 z" fill="#1f4e9c"/>
 <polyline points="60,100 285,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="585,100 810,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(60,100) rotate(180) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(60,100) rotate(180) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
-<g transform="translate(810,100) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(810,100) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <polyline points="60,240 285,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="585,240 810,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(60,240) rotate(180) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(60,240) rotate(180) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
-<g transform="translate(810,240) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(810,240) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <polyline points="200,170 285,170" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(200,170) rotate(180) scale(0.015) translate(-16,-1417)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="16,1417 1228,1417 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2645,1133 2645,1700 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2173,755 2173,2078 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1700,377 1700,2456 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1228,0 1228,2834 "/>
+<g transform="translate(200,170) rotate(180) scale(0.0167864) translate(-16,-1417)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="16,1417 1228,1417 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2645,1133 2645,1700 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2173,755 2173,2078 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1700,377 1700,2456 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1228,0 1228,2834 "/>
 </g>
 <polyline points="585,170 670,170" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(670,170) rotate(0) scale(0.015) translate(-16,-1417)">
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="16,1417 1228,1417 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2645,1133 2645,1700 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="2173,755 2173,2078 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1700,377 1700,2456 "/>
-<polyline fill="none" stroke="#1f4e9c" stroke-width="100" points="1228,0 1228,2834 "/>
+<g transform="translate(670,170) rotate(0) scale(0.0167864) translate(-16,-1417)">
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="16,1417 1228,1417 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2645,1133 2645,1700 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="2173,755 2173,2078 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1700,377 1700,2456 "/>
+<polyline fill="none" stroke="#1f4e9c" stroke-width="89.358" points="1228,0 1228,2834 "/>
 </g>
 <path d="M95,95 L105,100 L95,105 z" fill="#1f4e9c"/>
 <path d="M105,235 L95,240 L105,245 z" fill="#1f4e9c"/>

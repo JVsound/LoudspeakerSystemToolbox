@@ -6,23 +6,23 @@
 <rect x="225" y="85" width="70" height="170" rx="3" fill="#ffffff" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="60,100 225,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="295,100 460,100" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(60,100) rotate(180) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(60,100) rotate(180) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
-<g transform="translate(460,100) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(460,100) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <polyline points="60,240 225,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
 <polyline points="295,240 460,240" fill="none" stroke="#1f4e9c" stroke-width="1.5"/>
-<g transform="translate(60,240) rotate(180) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(60,240) rotate(180) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
-<g transform="translate(460,240) rotate(0) scale(0.4) translate(-5.4,-22.5)">
-<path fill="none" stroke="#1f4e9c" stroke-width="3.75" d=" M 67.5,22.5 L 5.4,22.5"/>
-<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="3.75" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
+<g transform="translate(460,240) rotate(0) scale(0.224964) translate(-5.4,-22.5)">
+<path fill="none" stroke="#1f4e9c" stroke-width="6.66773" d=" M 67.5,22.5 L 5.4,22.5"/>
+<ellipse fill="#ffffff" stroke="#1f4e9c" stroke-width="6.66773" cx="86.4" cy="22.5" rx="18.9" ry="18.9"/>
 </g>
 <path d="M105,95 L115,100 L105,105 z" fill="#1f4e9c"/>
 <path d="M405,95 L415,100 L405,105 z" fill="#1f4e9c"/>
