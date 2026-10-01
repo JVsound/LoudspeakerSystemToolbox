@@ -6,7 +6,7 @@
 %%
 %[text] ## Description
 %[text] `comp.Enclosure` is the abstract base class of the enclosures in the `comp` namespace. An enclosure holds the driver in `Driver` and describes the acoustical side of the loudspeaker system: everything at the front and at the rear of the diaphragm, from the diaphragm to the ambient pressure. `lspsys` uses the enclosure in its network, see [solve2PortNetwork](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','methods','solve2portnetworkdoc','solve2portnetworkdoc.m'))). The symbols are listed in [Symbols](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','symbols.m'))).
-%[text] The subclasses are [`comp.ClosedBox`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','closedbox','closedboxdoc.m'))), `comp.BassReflex`, `comp.FrontLoadedHorn` and `comp.FeaEnclosure`; only `comp.ClosedBox` is complete.
+%[text] The subclasses are [`comp.ClosedBox`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','closedbox','closedboxdoc.m'))) and `comp.FeaEnclosure`.
 %%
 %[text] ### The two 4-ports of an enclosure
 %[text] Every enclosure describes its acoustical side with two 4-ports on three conductors: the front of the diaphragm (top), the ambient pressure (middle, the reference) and the rear of the diaphragm (bottom). $ \\mathbf{T}\_{a,e} $ (`tae`) holds the enclosure and $ \\mathbf{T}\_{a,rad} $ (`tarad`) the radiation into the ambient pressure. Together they form the two-port network $ \\mathbf{T}\_a $ of the acoustical side:

@@ -35,7 +35,6 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
     plain = @(text) {text, 'n'};
     static = @(text) {text, 's'};
     abstract = @(text) {text, 'a'};
-    dim = @(text) {text, 'd'};
 
     lspsysBox = struct("x", 470, "y", 40, "w", 360, "name", "lspsys", "stereo", "", ...
         "italic", false, "dashed", false, "sections", {{ ...
@@ -78,19 +77,11 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
 
     enclosureBox.y = lspsysBox.y + classboxheight(lspsysBox) + 62;
     subclassY = enclosureBox.y + classboxheight(enclosureBox) + 92;
-    closedBoxBox = struct("x", 40, "y", subclassY, "w", 285, "name", "comp.ClosedBox", "stereo", "", ...
+    closedBoxBox = struct("x", 190, "y", subclassY, "w", 285, "name", "comp.ClosedBox", "stereo", "", ...
         "italic", false, "dashed", false, "sections", {{ ...
         {"Properties", {plain("RearVolume: double")}}, ...
         {"Methods", {plain("tae, tarad")}}}});
-    bassReflexBox = struct("x", 345, "y", subclassY, "w", 255, "name", "comp.BassReflex", ...
-        "stereo", "abstract", "italic", true, "dashed", true, "sections", {{ ...
-        {"Properties", {plain("Property1")}}, ...
-        {"Methods", {dim("(constructor only)")}}}});
-    hornBox = struct("x", 620, "y", subclassY, "w", 260, "name", "comp.FrontLoadedHorn", ...
-        "stereo", "abstract", "italic", true, "dashed", true, "sections", {{ ...
-        {"Properties", {plain("Property1")}}, ...
-        {"Methods", {plain("method1()")}}}});
-    feaEnclosureBox = struct("x", 910, "y", subclassY, "w", 330, "name", "comp.FeaEnclosure", "stereo", "", ...
+    feaEnclosureBox = struct("x", 803, "y", subclassY, "w", 330, "name", "comp.FeaEnclosure", "stereo", "", ...
         "italic", false, "dashed", false, "sections", {{ ...
         {"Properties", {plain("DiaphragmVelocity: double"), plain("PressureFrontFileName: string"), ...
             plain("PressureRearFileName: string"), plain("PressureFarFieldFileName: string")}}, ...
@@ -98,18 +89,12 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
         {"Methods", {plain("tae, tarad, micTransfer"), ...
             static("importAnsysPressureResults(filename)")}}}});
 
-    semiInductanceDriverBox = struct("x", 1340, "y", 40, "w", 300, "name", "comp.SemiInductanceDriver", ...
-        "stereo", "", "italic", false, "dashed", false, "sections", {{ ...
-        {"Properties", {plain("SemiInductance: double")}}, ...
-        {"Methods", {plain("zeb(f)")}}}});
-
-    boxes = {lspsysBox, resultBox, driverBox, enclosureBox, closedBoxBox, bassReflexBox, hornBox, ...
-        feaEnclosureBox, semiInductanceDriverBox};
+    boxes = {lspsysBox, resultBox, driverBox, enclosureBox, closedBoxBox, feaEnclosureBox};
 
     if collapsed
         % x, y and width per box, in the order of the boxes above
         collapsedLayout = [400 40 240; 40 40 240; 760 40 240; 400 190 240; ...
-            40 340 240; 310 340 240; 580 340 240; 850 340 240; 1060 40 260];
+            250 340 240; 550 340 240];
         for k = 1:numel(boxes)
             boxes{k}.x = collapsedLayout(k, 1);
             boxes{k}.y = collapsedLayout(k, 2);
@@ -119,11 +104,11 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
         subclassY = 340;
         driverArrowOffset = 31;
         resultArrowOffset = 23;
-        canvasWidth = 1360;
+        canvasWidth = 1040;
     else
         driverArrowOffset = 80;
         resultArrowOffset = 60;
-        canvasWidth = 1680;
+        canvasWidth = 1320;
     end
 
     boxSvg = strings(numel(boxes), 1);
@@ -143,7 +128,7 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
     resultRight = resultBox.x + resultBox.w;
     driverArrowY = enclosureBox.y + driverArrowOffset;
     resultArrowY = lspsysBox.y + resultArrowOffset;
-    subclassCenters = cellfun(@(box) box.x + box.w / 2, boxes(5:8));
+    subclassCenters = cellfun(@(box) box.x + box.w / 2, boxes(5:6));
 
     ink = "#2b3646";
     sans = fonts.sans;
@@ -173,33 +158,23 @@ function svgPath = generateclassdiagramsvg(svgPath, options)
             centerX, busY, centerX, subclassY, ink);
     end
 
-    % comp.SemiInductanceDriver, right of comp.Driver, inherits from it
-    subDriverBox = boxes{9};
-    inheritY = subDriverBox.y + round(min(boxHeight(9), boxHeight(3)) / 2);
-    connectors(end+1) = sprintf(['<path d="M%d,%d L%d,%d" fill="none" stroke="%s" stroke-width="1.6" ' ...
-        'marker-end="url(#inherit)"/>'], subDriverBox.x, inheritY, driverBox.x + driverBox.w, inheritY, ink);
-
-    legendY = subclassY + max(boxHeight(5:8)) + 50;
+    legendY = subclassY + max(boxHeight(5:6)) + 50;
     legend = strings(0, 1);
-    legend(end+1) = sprintf(['<rect x="40" y="%d" width="34" height="20" rx="3" fill="#ffffff" stroke="#7a8797" ' ...
-        'stroke-width="1.5" stroke-dasharray="6 4"/>'], legendY);
-    legend(end+1) = sprintf(['<text x="84" y="%d" font-family="%s" font-size="13" fill="%s">' ...
-        'work in progress (stub or not yet implemented)</text>'], legendY + 15, sans, ink);
     if collapsed
-        italicX = 420;
+        italicX = 40;
         arrowX = 40;
-        arrowY = legendY + 43;
-        extraHeight = 28;
+        arrowY = legendY + 36;
+        extraHeight = 20;
     else
-        italicX = 470;
-        arrowX = 780;
+        italicX = 40;
+        arrowX = 350;
         arrowY = legendY + 15;
         extraHeight = 0;
     end
     legend(end+1) = sprintf(['<text x="%d" y="%d" font-family="%s" font-size="13" font-style="italic" ' ...
         'fill="%s">italic: abstract</text>'], italicX, legendY + 15, sans, ink);
     if ~collapsed
-        legend(end+1) = sprintf(['<text x="620" y="%d" font-family="%s" font-size="13" ' ...
+        legend(end+1) = sprintf(['<text x="190" y="%d" font-family="%s" font-size="13" ' ...
             'text-decoration="underline" fill="%s">underline: static</text>'], legendY + 15, sans, ink);
     end
     legend(end+1) = sprintf(['<text x="%d" y="%d" font-family="%s" font-size="13" fill="%s">' ...

@@ -1,4 +1,4 @@
-classdef result
+classdef (InferiorClasses = {?matlab.graphics.axis.Axes}) result
     %RESULT Results of a loudspeaker system calculation
     %   A result object holds the arrays that lspsys calculates over Frequency: the source voltage and
     %   current and the volume velocities of the diaphragm and the radiated sound. lspsys.createResult
@@ -8,6 +8,8 @@ classdef result
     %   distance MicRadius. splMax, splPowerLimited, splExcursionLimited and splMaxPeakVoltage give the highest
     %   level and its voltage that ExcursionLimit and PowerLimit allow: the limits of the driver (Driver) that
     %   lspsys.createResult copies from Driver.ExcursionLimit and Driver.PowerLimit, or other values that you set.
+    %   plot shows the sound pressure levels, the magnitude of ElectricalImpedance and DiaphragmPeakExcursion against
+    %   Frequency.
 
     properties (SetAccess = ?lspsys)
         Frequency (1,:) double = 0; % Frequencies of the calculation in [Hz]
@@ -144,9 +146,91 @@ classdef result
             %   allow.
             val = sqrt(2)*min(obj.excursionVoltage(obj.ExcursionLimit),obj.powerVoltage(obj.PowerLimit));
         end
+
+        function [ax,lines] = plot(varargin)
+            %PLOT Plot a quantity of the result against frequency
+            %   [ax,lines] = plot(obj,name) plots the quantity name against Frequency on a logarithmic frequency
+            %   axis in the current axes and returns the axes and the line. name is one of "SoundPressureLevel",
+            %   "splMax", "splPowerLimited", "splExcursionLimited", "ElectricalImpedance" (magnitude in [Ohm]) and
+            %   "DiaphragmPeakExcursion" (in [mm]).
+            %
+            %   [ax,lines] = plot(ax,obj,name) plots in the axes ax, as plot of MATLAB does. Use hold on to add the
+            %   lines of another result to the same axes.
+            %
+            %   [ax,lines] = plot(obj,names) with a string array of names plots several quantities in one axes,
+            %   with a legend, and returns one line for each name, in the order of names. The quantities must have
+            %   the same unit: the names that give a sound pressure level can be combined.
+            %
+            %   Each line has the readable name of its quantity as DisplayName, which legend shows.
+            narginchk(2,3)
+            if isgraphics(varargin{1},"axes")
+                ax = varargin{1};
+                varargin(1) = [];
+            else
+                ax = gca;
+            end
+            obj = varargin{1};
+            names = string(varargin{2});
+
+            % One column of values and one axis label for each name:
+            y = zeros(numel(obj.Frequency),numel(names));
+            labels = strings(1,numel(names));
+            displayNames = strings(1,numel(names));
+            for k = 1:numel(names)
+                [values,labels(k),displayNames(k)] = obj.plotQuantity(names(k));
+                y(:,k) = values(:);
+            end
+            if numel(unique(labels)) > 1
+                error("result:mixedQuantities","Quantities with different units cannot be in one plot.")
+            end
+
+            % The DisplayName of each line is the text that legend shows for it:
+            lines = semilogx(ax,obj.Frequency(:),y);
+            for k = 1:numel(lines)
+                lines(k).DisplayName = displayNames(k);
+            end
+            ax.XScale = "log";
+            grid(ax,"on")
+            xlabel(ax,"Frequency [Hz]")
+            ylabel(ax,labels(1))
+            if numel(names) > 1
+                legend(ax,"show")
+            end
+        end
     end
 
     methods (Access = private)
+        function [val,label,displayName] = plotQuantity(obj,name)
+            %PLOTQUANTITY Values, axis label and legend text of a quantity that plot can show
+            label = "Sound pressure level [dB]";
+            switch name
+                case "SoundPressureLevel"
+                    val = obj.SoundPressureLevel;
+                    displayName = "Sound pressure level";
+                case "splMax"
+                    val = obj.splMax;
+                    displayName = "Maximum sound pressure level";
+                case "splPowerLimited"
+                    val = obj.splPowerLimited;
+                    displayName = "Sound pressure level, power limit";
+                case "splExcursionLimited"
+                    val = obj.splExcursionLimited;
+                    displayName = "Sound pressure level, excursion limit";
+                case "ElectricalImpedance"
+                    val = abs(obj.ElectricalImpedance);
+                    label = "Electrical impedance magnitude [Ohm]";
+                    displayName = "Electrical impedance";
+                case "DiaphragmPeakExcursion"
+                    val = 1e3*obj.DiaphragmPeakExcursion;
+                    label = "Diaphragm peak excursion [mm]";
+                    displayName = "Diaphragm peak excursion";
+                otherwise
+                    error("result:unknownQuantity","Unknown quantity ""%s"": use one of %s.",name, ...
+                        strjoin(["SoundPressureLevel","splMax","splPowerLimited","splExcursionLimited", ...
+                        "ElectricalImpedance","DiaphragmPeakExcursion"],", "))
+            end
+        end
+
         function val = excursionVoltage(obj,excursion)
             %EXCURSIONVOLTAGE RMS source voltage at which the peak excursion reaches the excursion limit, in [V]
             %   The model is linear, so the excursion scales with the source voltage.

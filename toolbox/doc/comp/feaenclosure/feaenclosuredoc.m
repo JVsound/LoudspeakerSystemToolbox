@@ -12,7 +12,7 @@
 %[text] ![](text:image:f3a1)
 %[text]{"align":"center"} $ Z\_{a,f} = \\frac{p\_{f,FEA}}{U\_{d,FEA}}, \\quad Z\_{a,r} = -\\frac{p\_{r,FEA}}{U\_{d,FEA}} $
 %[text] The minus sign follows from the rear flows, which count to the left: a diaphragm that moves to the front lowers the pressure at the rear. With port 2 of $ \\mathbf{T}\_a $ open, the diaphragm works on $ Z\_a = Z\_{a,f} + Z\_{a,r} $; the network then gives the diaphragm volume velocity $ U\_d $ of the loudspeaker system.
-%[text] Both loads hold the enclosure and the radiation together. A split into an enclosure part and a radiation part, which the radiated volume velocity of a bass reflex or a horn would need, requires more results from Ansys, for example the pressure and the volume velocity at the port or the mouth.
+%[text] Both loads hold the enclosure and the radiation together. A split into an enclosure part and a radiation part, which the radiated volume velocity of an enclosure with a port or a horn would need, requires more results from Ansys, for example the pressure and the volume velocity at the port or the mouth.
 %%
 %[text] ## Pressure at the microphone
 %[text] The system is linear, so the pressure at the microphone follows from the transfer $ H\_{mic} $ of the FEA model (`micTransfer`) and the diaphragm volume velocity of the system:
@@ -78,13 +78,13 @@
 %%
 %[text] ## Examples
 %%
-%[text] ### Example: Sound pressure level of a front-loaded horn
-%[text] Calculate a B&C 21SW152-8 in a front-loaded horn with a closed box at the rear, from the Ansys results in `toolbox\examples\helperfiles`, and plot the sound pressure level at the microphone of the FEA model. See [`feaEnclosureExample`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'examples','feaEnclosureExample.m'))) for more.
+%[text] ### Example: Sound pressure level of an enclosure with a horn at the front
+%[text] Calculate a B&C 21SW152-8 in an enclosure with a horn at the front and a closed box at the rear, from the Ansys results in `toolbox\examples\helperfiles`, and plot the sound pressure level at the microphone of the FEA model. See [`feaEnclosureExample`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'examples','feaEnclosureExample.m'))) for more.
 sys = lspsys;
 sys.Enclosure = comp.FeaEnclosure;
-sys.Enclosure.PressureFrontFileName = "frontloadedhorn_pfront.txt";
-sys.Enclosure.PressureRearFileName = "frontloadedhorn_prear.txt";
-sys.Enclosure.PressureFarFieldFileName = "frontloadedhorn_prmic.txt";
+sys.Enclosure.PressureFrontFileName = "feaexample_pfront.txt";
+sys.Enclosure.PressureRearFileName = "feaexample_prear.txt";
+sys.Enclosure.PressureFarFieldFileName = "feaexample_prmic.txt";
 sys.Enclosure.DiaphragmVelocity = 1e-3;
 sys.Enclosure.Driver.Re = 6;
 sys.Enclosure.Driver.Le = 2.2e-3;

@@ -7,7 +7,6 @@
 %[text] ## Description
 %[text] The `comp.Driver` class describes the electromechanical transducer of a loudspeaker system. The Thiele-Small parameters `Re`, `Le`, `Qes`, `Qms`, `Fs`, `Sd` and `Vas` of the datasheet set the electrical, electromechanical and mechanical side of the two-port network of [`lspsys`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','lspsysdoc.m'))); the other parameters, such as `Bl`, `Cms` and `Mmd`, are derived from them.
 %[text] The limits of the datasheet, the power handling with its impedances and the excursion, are optional: they do not change the calculation, and a limit of 0 means that it is not given. [`result.splMax`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','resultdoc.m'))) uses them to calculate the highest sound pressure level; `ExcursionLimit` and `PowerLimit` choose which limits it uses by default.
-%[text] For a voice coil with losses by eddy currents, use the subclass [`comp.SemiInductanceDriver`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','comp','semiinductancedriver','semiinductancedriverdoc.m'))), which adds a semi-inductance to the blocked electrical impedance.
 %%
 %[text] ## Creation
 %[text] ```matlabCodeExample

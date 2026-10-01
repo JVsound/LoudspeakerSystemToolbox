@@ -16,7 +16,6 @@
 %[text] | $ H\_{mic} $ | Pa.s/m3 | `MicTransfer`, `micTransfer` |
 %[text] | $ i\_g $ | A | `SourceCurrent` |
 %[text] | $ k $ | rad/m | `WaveNumber` |
-%[text] | $ K\_e $ | Ohm s^0.5 | `SemiInductance` |
 %[text] | $ \\lambda $ | m | `Wavelength` |
 %[text] | $ L\_e $ | H | `Le` |
 %[text] | $ M\_{md} $ | kg | `Mmd` |

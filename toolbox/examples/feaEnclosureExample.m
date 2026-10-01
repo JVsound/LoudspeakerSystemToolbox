@@ -8,9 +8,9 @@ sys = lspsys;
 %[text] ## Add the FEA enclosure
 %[text] Give the system a `comp.FeaEnclosure` with the three result files of Ansys: the pressure averaged over the front and over the rear of the diaphragm, and the pressure at the microphone. The files are on the MATLAB path, so their names are enough. The FEA model imposed a diaphragm velocity of 1 mm/s.
 sys.Enclosure = comp.FeaEnclosure;
-sys.Enclosure.PressureFrontFileName = "frontloadedhorn_pfront.txt";
-sys.Enclosure.PressureRearFileName = "frontloadedhorn_prear.txt";
-sys.Enclosure.PressureFarFieldFileName = "frontloadedhorn_prmic.txt";
+sys.Enclosure.PressureFrontFileName = "feaexample_pfront.txt";
+sys.Enclosure.PressureRearFileName = "feaexample_prear.txt";
+sys.Enclosure.PressureFarFieldFileName = "feaexample_prmic.txt";
 sys.Enclosure.DiaphragmVelocity = 1e-3;
 %%
 %[text] ## Add the driver
