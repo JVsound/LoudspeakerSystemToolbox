@@ -5,7 +5,7 @@
 %[text] **Superclasses:** none
 %%
 %[text] ## Description
-%[text] A `result` object holds the arrays that [`lspsys`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','lspsysdoc.m'))) calculates over `Frequency`: the source voltage and current, the volume velocity of the diaphragm and the volume velocity of the radiated sound. The electrical impedance, the sound pressure, the sound pressure level and the excursion of the diaphragm are derived from these arrays when they are read, so they always follow the distance `MicRadius`, the only property that can be changed.
+%[text] A `result` object holds the arrays that [`lspsys`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','lspsys','lspsysdoc.m'))) calculates over `Frequency`: the source voltage and current, the volume velocity of the diaphragm and the volume velocity of the radiated sound. The electrical impedance, the sound pressure, the sound pressure level and the excursion of the diaphragm are derived from these arrays when they are read, so they always follow the distance `MicRadius`, the only property that can be changed. The method [`plot`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','plotdoc','plotdoc.m'))) plots the sound pressure levels, the magnitude of the electrical impedance and the peak excursion of the diaphragm against frequency.
 %[text] The symbols in the equations are listed in [`symbols`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','symbols.m'))).
 %%
 %[text] ## Creation
@@ -107,6 +107,7 @@
 %[text:table]{"columnWidths":[180,80,-1]}
 %[text] | Method | Type | Description |
 %[text] | --- | --- | --- |
+%[text] | [`plot`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','plotdoc','plotdoc.m'))) | Instance | Plot a sound pressure level, the magnitude of the electrical impedance or the peak excursion against frequency. |
 %[text] | [`splMax`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splmaxdoc','splmaxdoc.m'))) | Instance | Highest sound pressure level that the power and the excursion limits allow, for a sine signal: the lower of the next two. |
 %[text] | [`splPowerLimited`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splpowerlimiteddoc','splpowerlimiteddoc.m'))) | Instance | Sound pressure level that the power limit `PowerLimit` alone allows. |
 %[text] | [`splExcursionLimited`](matlab:open(fullfile(fileparts(fileparts(which('lspsys'))),'doc','result','methods','splexcursionlimiteddoc','splexcursionlimiteddoc.m'))) | Instance | Sound pressure level that the excursion limit `ExcursionLimit` alone allows. |
