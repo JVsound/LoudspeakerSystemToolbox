@@ -15,7 +15,7 @@
 %[text]         Enclosure (1,1) comp.Enclosure = comp.ClosedBox; % Enclosure of the loudspeaker
 %[text]     end
 %[text] 
-%[text]     properties (Dependent, Hidden)
+%[text]     properties (Dependent)
 %[text]         AngularFrequency % Angular frequency in [rad/s]
 %[text]         NumFrequencies % Number of frequencies
 %[text]     end
@@ -50,7 +50,7 @@
 %[text] - Indentation is 4 spaces per level.
 %[text] - The H1 line and the help lines are comments directly below the `classdef` line and below the `function` line of a method. They are indented one level deeper than the `classdef` or `function` line above them; for a method that is level with its body.
 %[text] - The name in the H1 line is written in capitals (`%NAME`, `%METHOD1`).
-%[text] - The blocks appear in this order: `properties`, `properties (Dependent, Hidden)`, then `methods`. In `methods` the constructor comes first, then the `get.` methods.
+%[text] - The blocks appear in this order: `properties`, `properties (Dependent)`, then `methods`. In `methods` the constructor comes first, then the `get.` methods.
 %[text] - There is one blank line between the blocks and between the methods (Rules *Around property blocks*, *Around method blocks* and *Around methods*). \
 %%
 %[text] ## Property validation (added to the template)

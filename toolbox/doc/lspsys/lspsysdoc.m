@@ -40,37 +40,37 @@
 %[text] ### `AngularFrequency` — Angular frequency
 %[text] `double` \[rad/s\]
 %[text] Angular frequency $ \\omega = 2\\pi f $ for every element of `Frequency`.
-%[text] **Attributes:** `Dependent`, `Hidden`
+%[text] **Attributes:** `Dependent`
 %%
 %[text] ### `WaveNumber` — Wave number
 %[text] `double` \[rad/m\]
 %[text] Wave number, the spatial angular frequency: $ k = \\frac{\\omega}{c} = \\frac{2\\pi f}{c} = \\frac{2\\pi}{\\lambda} $, with the speed of sound $ c $ from `SpeedOfSound`.
-%[text] **Attributes:** `Dependent`, `Hidden`
+%[text] **Attributes:** `Dependent`
 %%
 %[text] ### `Wavelength` — Wavelength
 %[text] `double` \[m\]
 %[text] Wavelength $ \\lambda = \\frac{c}{f} $ for every element of `Frequency`.
-%[text] **Attributes:** `Dependent`, `Hidden`
+%[text] **Attributes:** `Dependent`
 %%
 %[text] ### `NumFrequencies` — Number of frequencies
 %[text] `double`
 %[text] Number of elements in `Frequency`.
-%[text] **Attributes:** `Dependent`, `Hidden`
+%[text] **Attributes:** `Dependent`
 %%
 %[text] ### `SpeedOfSound` — Speed of sound
 %[text] `double` \[m/s\]
 %[text] Speed of sound in air: 343 m/s.
-%[text] **Attributes:** `Constant`, `Hidden`
+%[text] **Attributes:** `Constant`
 %%
 %[text] ### `AirDensity` — Density of air
 %[text] `double` \[kg/m3\]
 %[text] Density of air at sea level: 1.225 kg/m3.
-%[text] **Attributes:** `Constant`, `Hidden`
+%[text] **Attributes:** `Constant`
 %%
 %[text] ### `ReferencePressure` — Reference pressure
 %[text] `double` \[Pa\]
 %[text] Reference pressure for sound pressure level calculations: 20e-6 Pa.
-%[text] **Attributes:** `Constant`, `Hidden`
+%[text] **Attributes:** `Constant`
 %%
 %[text] ## Methods
 %[text:table]

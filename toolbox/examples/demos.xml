@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<demos>
+    <name>Loudspeaker System Toolbox</name>
+    <type>toolbox</type>
+    <icon>HelpIcon.DEMOS</icon>
+    <description>Model and simulate loudspeaker systems in the frequency domain, with a variety in enclosure types.</description>
+
+    <demosection>
+        <label>Getting Started</label>
+        <demoitem>
+            <label>Introduction to the Loudspeaker System Toolbox</label>
+            <type>M-file</type>
+            <source>GettingStarted</source>
+        </demoitem>
+    </demosection>
+
+    <demosection>
+        <label>Examples</label>
+        <demoitem>
+            <label>Calculate a Closed-Box Loudspeaker (comp.ClosedBox)</label>
+            <type>M-file</type>
+            <source>closedBoxExample</source>
+        </demoitem>
+        <demoitem>
+            <label>Calculate a Loudspeaker from FEA Results (comp.FeaEnclosure)</label>
+            <type>M-file</type>
+            <source>feaEnclosureExample</source>
+        </demoitem>
+    </demosection>
+</demos>

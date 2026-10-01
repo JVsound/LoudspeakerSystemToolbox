@@ -28,13 +28,13 @@
 <text x="484" y="170" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">RadiationAngle: string</text>
 <text x="484" y="192" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">Enclosure: comp.Enclosure</text>
 <rect x="470" y="198" width="360" height="24" fill="#eef1f5"/>
-<text x="484" y="214" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Dependent (hidden)</text>
+<text x="484" y="214" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Dependent</text>
 <text x="484" y="238" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">AngularFrequency</text>
 <text x="484" y="260" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">WaveNumber</text>
 <text x="484" y="282" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">Wavelength</text>
 <text x="484" y="304" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">NumFrequencies</text>
 <rect x="470" y="310" width="360" height="24" fill="#eef1f5"/>
-<text x="484" y="326" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Constant (hidden)</text>
+<text x="484" y="326" font-family="'Segoe UI', Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#44546a">Constant</text>
 <text x="484" y="350" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">SpeedOfSound = 343</text>
 <text x="484" y="372" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">AirDensity = 1.225</text>
 <text x="484" y="394" font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#1b2430">ReferencePressure = 20e-6</text>

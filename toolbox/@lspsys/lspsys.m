@@ -11,14 +11,14 @@ classdef lspsys
         Enclosure (1,1) comp.Enclosure = comp.ClosedBox; % Enclosure that contains the driver
     end
 
-    properties (Dependent, Hidden)
+    properties (Dependent)
         AngularFrequency % Angular frequency in [rad/s]
         WaveNumber % Wave number in [rad/m]
         Wavelength % Wavelength in [m]
         NumFrequencies % Number of frequencies
     end
 
-    properties (Constant, Hidden)
+    properties (Constant)
         SpeedOfSound = 343; % Speed of sound [m/s], at 20deg C. Source: Wikipedia
         AirDensity = 1.225; % Density of air [kg/m3] at sea level, at 20deg C. Source: Wikipedia
         ReferencePressure = 20e-6; % Reference pressure [Pa] for sound pressure level calculations

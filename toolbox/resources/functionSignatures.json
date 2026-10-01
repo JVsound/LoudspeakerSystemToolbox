@@ -1,0 +1,44 @@
+{
+  "_schemaVersion": "1.0.0",
+  "lspsys.f2k": {
+    "inputs": [
+      {"name": "f", "kind": "required", "type": ["double"], "purpose": "Frequency in Hz"}
+    ],
+    "outputs": [
+      {"name": "val", "type": ["double"]}
+    ]
+  },
+  "lspsys.f2Lambda": {
+    "inputs": [
+      {"name": "f", "kind": "required", "type": ["double"], "purpose": "Frequency in Hz"}
+    ],
+    "outputs": [
+      {"name": "val", "type": ["double"]}
+    ]
+  },
+  "comp.Enclosure.zarad": {
+    "inputs": [
+      {"name": "rd", "kind": "required", "type": ["double", "scalar", "positive"], "purpose": "Radius of the piston in m"},
+      {"name": "w", "kind": "required", "type": ["double"], "purpose": "Angular frequency in rad/s"}
+    ],
+    "outputs": [
+      {"name": "val", "type": ["double"]}
+    ]
+  },
+  "comp.Enclosure.struve": {
+    "inputs": [
+      {"name": "x", "kind": "required", "type": ["double"], "purpose": "Argument of the Struve function H1"}
+    ],
+    "outputs": [
+      {"name": "val", "type": ["double"]}
+    ]
+  },
+  "comp.FeaEnclosure.importAnsysPressureResults": {
+    "inputs": [
+      {"name": "fileName", "kind": "required", "type": ["file=*.txt"], "purpose": "Tab-separated pressure result file of Ansys"}
+    ],
+    "outputs": [
+      {"name": "val", "type": ["struct"]}
+    ]
+  }
+}
